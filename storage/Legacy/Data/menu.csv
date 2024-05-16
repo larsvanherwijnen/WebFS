@@ -1,0 +1,175 @@
+id,menunummer,menu_toevoeging,naam,price,soortgerecht,beschrijving
+1,1,,Soep Ling Fa,3.8,SOEP,
+2,2,,Kippensoep,2.9,SOEP,
+3,3,,Tomatensoep,2.9,SOEP,
+4,4,,Haaienvinnensoep,3.1,SOEP,
+5,5,,Champignonsoep,3.3,SOEP,
+6,6,,Pekingsoep,3.8,SOEP,
+7,7,,Wan Tan Soep,4.3,SOEP,
+8,8,,Chinese Champignonsoep,4.1,SOEP,
+9,10,,Loempia Ling Fa,6.2,VOORGERECHT,"met atjar, ananas en pindasaus"
+10,11,,Loempia Compleet,6.2,VOORGERECHT,met gesmoord rundvlees en pikante saus
+11,12,,Loempia met Kip,3.9,VOORGERECHT,
+12,13,,Loempia,3.8,VOORGERECHT,
+13,14,,Chinese mini loempia,4.9,VOORGERECHT,4 st.
+14,14,A,Vegetarische mini loempia,4.9,VOORGERECHT,12 st.
+15,15,,Kroepoek,2.5,VOORGERECHT,
+16,15,A,Casave Kroepoek,2.7,VOORGERECHT,
+17,16,,Pangsit Goreng,3.9,VOORGERECHT,7 st.
+18,17,,Pisang Goreng,3.4,VOORGERECHT,5 st.
+19,18,,Chinese Dim Sum,5.4,VOORGERECHT,"mini loempia, kerry ko, pangsit goreng, garnalenpasteitje"
+20,19,,Sat&eacute; Babi,5.4,VOORGERECHT,4 st.
+21,20,,Sat&eacute; Ajam,5.4,VOORGERECHT,4 st.
+22,20,A,Sat&eacute; Garnalen,9.9,VOORGERECHT,3 st.
+23,21,,Fong Mei Ha,8.1,VOORGERECHT,krokant gepaneerd garnalen. 4 st.
+24,22,,Patat,2.3,VOORGERECHT,
+25,23,,Tsa Siu Mai,3.5,VOORGERECHT,gebakken vleespasteitje. 4 st.
+26,24,,Atjar,3,VOORGERECHT,
+27,25,,Witte Rijst,3,VOORGERECHT,
+28,26,,Grote pindasaus,3.9,VOORGERECHT,
+29,27,,Kleine pindasaus,2.3,VOORGERECHT,
+30,28,,Kippenpootje,2.3,VOORGERECHT,
+31,29,,Halve kip,6,VOORGERECHT,
+32,29,H,Kroket,1.4,VOORGERECHT,
+33,29,G,Frikandel,1.4,VOORGERECHT,
+34,180,H,Kleine Sambal,2.5,VOORGERECHT,
+35,30,,Bami of Nasi Goreng Ling Fa,14.3,BAMI EN NASI GERECHTEN,"Foe Yong Hai, Babi Pangang, sat&eacute; en kippenpootje"
+36,31,,Bami of Nasi Goreng met ei,5,BAMI EN NASI GERECHTEN,
+37,32,,Bami of Nasi Goreng speciaal,8.5,BAMI EN NASI GERECHTEN,
+38,33,,Bami of Nasi Goreng met sat&eacute;,8.5,BAMI EN NASI GERECHTEN,3 st.
+39,34,,Nasi Yeung Chow,10.9,BAMI EN NASI GERECHTEN,
+40,34,A,Nasi Yeung Chow,13,BAMI EN NASI GERECHTEN,met garnaaltjes en Cha Sieuw-vlees
+41,35,,Bami of Nasi Malay,9.3,BAMI EN NASI GERECHTEN,
+42,36,,Bami of Nasi met kipfilet,9.3,BAMI EN NASI GERECHTEN,
+43,37,,Bami of Nasi met varkensvlees,9.3,BAMI EN NASI GERECHTEN,
+44,38,,Bami of Nasi met garnalen,14.3,BAMI EN NASI GERECHTEN,
+45,39,,Bami of Nasi met ossenhaas,15.3,BAMI EN NASI GERECHTEN,
+46,40,,"Babi Pangang, Foe Yong Hani en sat&eacute;",15.8,COMBINATIE GERECHTEN (met witte rijst),
+47,41,,"Babi Pangang, Tjap Tjoy en sat&eacute;",15.8,COMBINATIE GERECHTEN (met witte rijst),
+48,42,,"Babi Pangang, Koe Loe Yuk en sat&eacute;",15.8,COMBINATIE GERECHTEN (met witte rijst),
+49,43,,"Babi Pangang, Tau Sie Kai en sat&eacute;",16.5,COMBINATIE GERECHTEN (met witte rijst),
+50,44,,"Koe Loe Yuk, Foe Yong Hai en sat&eacute;",15.8,COMBINATIE GERECHTEN (met witte rijst),
+51,45,,"Koe Loe Yuk, Tjap Tjoy en sat&eacute;",15.8,COMBINATIE GERECHTEN (met witte rijst),
+52,46,,"Foe Yong Hai, Tjap Tjoy en sat&eacute;",15.8,COMBINATIE GERECHTEN (met witte rijst),
+53,47,,"Foe Yong Hai, Kip Kerrie en Sat&eacute;",16.5,COMBINATIE GERECHTEN (met witte rijst),
+54,50,,Mihoen Ling Fa,16.4,MIHOEN GERECHTEN,"Foe Yong Hai, Babi Pangang, sat&eacute; en kippenpootje"
+55,51,,Mihoen met varkensvlees,9.3,MIHOEN GERECHTEN,
+56,52,,Mihoen met kipfilet,10.4,MIHOEN GERECHTEN,
+57,53,,Mihoen met ossenhaas,16.4,MIHOEN GERECHTEN,
+58,54,,Mihoen met garnalen,15.3,MIHOEN GERECHTEN,
+59,55,,Mihoen Singapore-style,11.9,MIHOEN GERECHTEN,met kleine garnaaltjes en Cha Sieuw-vlees en kerrie poeder
+60,56,,Mihoen met Cha Sieuw vlees,11.2,MIHOEN GERECHTEN,
+61,57,,Chinese Bami Ling Fa,16.9,CHINESE BAMI GERECHTEN,"Foe Yong Hai, Babi Pangang, sat&eacute; en kippenpootje"
+62,58,,Chinese Bami met varkensvlees,10.1,CHINESE BAMI GERECHTEN,
+63,58,A,Chinese Bami met kipfilet,11.2,CHINESE BAMI GERECHTEN,
+64,58,B,Chinese Bami met Cha Sieuw-vlees,12.2,CHINESE BAMI GERECHTEN,
+65,58,C,Chinese Bami met garnalen,15.8,CHINESE BAMI GERECHTEN,
+66,58,D,Chinese Bami met ossenhaas,17.4,CHINESE BAMI GERECHTEN,
+67,,M1,Bami of Nasi Rames Ling Fa,15.3,INDISCHE GERECHTEN,"Babi Pangan, Foe Yong Hai, Daging Roedjak, Atjar en kippootje"
+68,,M2,Bami of Nasi Rames,8.8,INDISCHE GERECHTEN,
+69,,M3,Bami of Nasi Rames speciaal,10.8,INDISCHE GERECHTEN,
+70,,M4,Gado Gado,7.6,INDISCHE GERECHTEN,met witte rijst
+71,,M5,Daging Smoor,13.3,INDISCHE GERECHTEN,met witte rijst
+72,,M6,Daging Roedjak,13.3,INDISCHE GERECHTEN,met witte rijst
+73,59,,Foe Yong Hai Ling Fa,16.4,EIERGERECHTEN (met witte rijst),"ossenhaas, garnalen en kipfilet"
+74,60,,Foe Yong Hai met varkensvlees,8.8,EIERGERECHTEN (met witte rijst),
+75,61,,Foe Yong Hai met kipfilet,9.2,EIERGERECHTEN (met witte rijst),
+76,62,,Foe Yong Hai met garnalen,15.3,EIERGERECHTEN (met witte rijst),
+77,63,,Foe Yong Hai met krab,15.3,EIERGERECHTEN (met witte rijst),
+78,63,A,Foe Yong Hai met Cha Sieuw Vlees,11.2,EIERGERECHTEN (met witte rijst),
+79,63,B,Foe Yong Hai met ossenhaas,16.4,EIERGERECHTEN (met witte rijst),
+80,64,,Tjap Tjoy Ling Fa,16.4,GROENTEN GERECHTEN (met witte rijst),"ossenhaas, garnalen en kipfilet"
+81,65,,Tjap Tjoy met varkensvlees,8.8,GROENTEN GERECHTEN (met witte rijst),
+82,66,,Tjap Tjoy met kipfilet,9.2,GROENTEN GERECHTEN (met witte rijst),
+83,67,,Tjap Tjoy met ossenhaas,16.4,GROENTEN GERECHTEN (met witte rijst),
+84,68,,Tjap Tjoy met garnalen,15.3,GROENTEN GERECHTEN (met witte rijst),
+85,70,,Babi Pangang,12.2,VLEES GERECHTEN (met witte rijst),
+86,71,,Babi Pangang in ketjapsaus,12.3,VLEES GERECHTEN (met witte rijst),
+87,72,,Cha Sieuw,13.3,VLEES GERECHTEN (met witte rijst),rood geroosterd varkensvlees
+88,73,,Cha Sieuw in pikante saus,13.8,VLEES GERECHTEN (met witte rijst),
+89,74,,Geroosterde speenvarken,13.8,VLEES GERECHTEN (met witte rijst),
+90,75,,Koe Loe Yuk,11.9,VLEES GERECHTEN (met witte rijst),bolletjes vlees met zoetzure saus
+91,76,,Varkenshaas met kerriesaus,11.9,VLEES GERECHTEN (met witte rijst),
+92,77,,Varkenshaas met ketjapsaus,11.9,VLEES GERECHTEN (met witte rijst),
+93,78,,Varkenshaas met tomatensaus,11.9,VLEES GERECHTEN (met witte rijst),
+94,78,A,Varkenshaas met champignons in knoflooksaus,11.9,VLEES GERECHTEN (met witte rijst),
+95,78,B,Varkenshaas met Chinese champignons,12.2,VLEES GERECHTEN (met witte rijst),
+96,79,,Varkenshaas met zwarte bonensaus,12.2,VLEES GERECHTEN (met witte rijst),
+97,79,A,Varkenshaas met verse ananas in zoetzure saus,13.3,VLEES GERECHTEN (met witte rijst),
+98,79,B,Yu Sian Yuk,13.3,VLEES GERECHTEN (met witte rijst),varkenshaas met licht zoet pikante kruiden saus
+99,79,C,SzeChuan Yuk,13.3,VLEES GERECHTEN (met witte rijst),varkenshaas met pittige kruiden saus
+100,80,,Ajam Pangang,13,KIP GERECHTEN (met witte rijst),
+101,81,,Ajam Pangang in ketjapsaus,13,KIP GERECHTEN (met witte rijst),
+102,82,,Koe Loe Kai,13,KIP GERECHTEN (met witte rijst),bolletjes kip met zoetzure saus
+103,83,,Kipfilet met kerriesaus,13,KIP GERECHTEN (met witte rijst),
+104,84,,Kipfilet met champignons in knoflooksaus,13,KIP GERECHTEN (met witte rijst),
+105,85,,Kipfilet met tomatensaus,13,KIP GERECHTEN (met witte rijst),
+106,86,,Kipfilet met ketjapsaus,13,KIP GERECHTEN (met witte rijst),
+107,87,,Kipfilet met broccoli in knoflooksaus,13.3,KIP GERECHTEN (met witte rijst),
+108,88,,Kipfilet met Chinese champignons,13.3,KIP GERECHTEN (met witte rijst),
+109,89,,Kipfilet met zwarte pepersaus,13.3,KIP GERECHTEN (met witte rijst),
+110,90,,Kipfilet met verse ananas in zoetzure saus,13.3,KIP GERECHTEN (met witte rijst),
+111,91,,Kipfilet met zwarte pepersaus,13.3,KIP GERECHTEN (met witte rijst),
+112,92,,Tjieuw Yem Kai,13.3,KIP GERECHTEN (met witte rijst),licht gebraden kipfilet met zout en peper
+113,93,,Yao Koe Kai,13.3,KIP GERECHTEN (met witte rijst),kipfilet met cashewnoten in licht pikante saus
+114,94,,Lychee Kai,13.8,KIP GERECHTEN (met witte rijst),licht gebraden kipfilet met lychee in zoetzure saus
+115,95,,Yu Sian Kai,13.3,KIP GERECHTEN (met witte rijst),kipfilet met licht zoet pikante kruidensaus
+116,96,,Sze Chuan Kai,13.8,KIP GERECHTEN (met witte rijst),kipfilet met pittige kruidensaus
+117,97,,Kung Bao Kai,13.8,KIP GERECHTEN (met witte rijst),kipfilet met cashewnoten in pittige saus
+118,98,,Garnalen met champignons in knoflooksaus,15.9,GARNALEN GERECHTEN (met witte rijst),
+119,99,,Garnalen met tomatensaus,15.9,GARNALEN GERECHTEN (met witte rijst),
+120,100,,Garnalen met ketjapsaus,15.9,GARNALEN GERECHTEN (met witte rijst),
+121,101,,Garnalen met broccoli,16.1,GARNALEN GERECHTEN (met witte rijst),
+122,102,,Garnalen met Chinese champignons,16.1,GARNALEN GERECHTEN (met witte rijst),
+123,103,,Garnalen met kerriesaus,16.1,GARNALEN GERECHTEN (met witte rijst),
+124,104,,Garnalen met zwarte bonensaus,16.1,GARNALEN GERECHTEN (met witte rijst),
+125,105,,Garnalen met zwarte pepersaus,16.1,GARNALEN GERECHTEN (met witte rijst),
+126,106,,Garnalen met chilisaus,16.1,GARNALEN GERECHTEN (met witte rijst),
+127,107,,Yu Sian Haa,16.1,GARNALEN GERECHTEN (met witte rijst),garnalen met licht zoet pikante kruidensaus
+128,108,,Tjieuw Yem Haa,16.1,GARNALEN GERECHTEN (met witte rijst),licht gebraden garnalen met zout en peper
+129,109,,Tja Tai Haa,16.1,GARNALEN GERECHTEN (met witte rijst),krokant gebakken garnalen
+130,110,,Sze Chuan Haa,16.4,GARNALEN GERECHTEN (met witte rijst),
+131,111,,Ossenhaas met chanpignons in knoflooksaus,16.9,OSSENHAAS GERECHTEN (met witte rijst),
+132,112,,Ossenhaas met tomatensaus,16.9,OSSENHAAS GERECHTEN (met witte rijst),
+133,113,,Ossenhaas met ketjapsaus,16.9,OSSENHAAS GERECHTEN (met witte rijst),
+134,114,,Ossenhaas met broccoli,17.1,OSSENHAAS GERECHTEN (met witte rijst),
+135,115,,Ossenhaas met Chinese champignons,17.1,OSSENHAAS GERECHTEN (met witte rijst),
+136,116,,Ossenhaas met kerriesaus,17.1,OSSENHAAS GERECHTEN (met witte rijst),
+137,117,,Ossenhaas met zwarte bonensaus,17.1,OSSENHAAS GERECHTEN (met witte rijst),
+138,118,,Ossenhaas met zwarte pepersaus,17.1,OSSENHAAS GERECHTEN (met witte rijst),
+139,119,,Yu Sian Ngau Yuk,17.1,OSSENHAAS GERECHTEN (met witte rijst),ossenhaas met licht zoet pikante kruidensaus
+140,120,,Sze Chuan Ngau Yuk,17.4,OSSENHAAS GERECHTEN (met witte rijst),ossenhaas met pittige kruidensaus
+141,121,,Visfilet met kerriesaus,14.5,VISSEN GERECHTEN (met witte rijst),
+142,122,,Visfilet met oestersaus,14.5,VISSEN GERECHTEN (met witte rijst),
+143,123,,Visfilet met zoetzure saus,14.5,VISSEN GERECHTEN (met witte rijst),licht gebraden visfilet in zoete pikante saus
+144,124,,Hong Shau Yu,14.5,VISSEN GERECHTEN (met witte rijst),licht gebraden visfilet in zoete pikante saus
+145,125,,Tjeuw Yem Yu,15,VISSEN GERECHTEN (met witte rijst),licht gebraden visfilet met zout en peper
+146,126,,San Sching Po,16.1,VISSEN GERECHTEN (met witte rijst),"visfilet, garnalen, krab en groenten in knoflooksaus"
+147,,P1,Geroosterde Peking Eend,16.6,PEKING EEND GERECHTEN (met witte rijst),
+148,,P2,Peking Eend met verse ananas in zoetzure saus,17.1,PEKING EEND GERECHTEN (met witte rijst),
+149,,P3,Peking Eend met Chinese champignons in oestersaus,17.1,PEKING EEND GERECHTEN (met witte rijst),
+150,,P4,Yu Sian Ya,17.1,PEKING EEND GERECHTEN (met witte rijst),peking eend met licht zoet pikante kruidensaus
+151,,T1,Tiepan Ling Fa,17.9,TIEPAN SPECIALITEITEN (met witte rijst),"garnalen, kipfilet, ossenhaas en groenten in zwarte pepersaus"
+152,,T2,Tiepan Kai,15.3,TIEPAN SPECIALITEITEN (met witte rijst),licht gebraden kipfilet en groenten met zoet pikante saus
+153,,T3,Tiepan San Yuk,17.1,TIEPAN SPECIALITEITEN (met witte rijst),"lichtgrbaden varkenshaas, kipfilet, ossenhaas en groenten met zoet pikante saus"
+154,,T4,Tiepan Haa,17.4,TIEPAN SPECIALITEITEN (met witte rijst),garnalen en groenten met zoet pikante saus
+155,,T5,Tiepan Ngau Yuk,19.5,TIEPAN SPECIALITEITEN (met witte rijst),5st. ossenhaas en groenten met zoet pikante saus
+156,,V4,Tau Fu Po,15.3,TIEPAN SPECIALITEITEN (met witte rijst),"sojakaas, cha sieuw garnalen en chinese paddenstoelen"
+157,,V1,Vegetarische Tjap Tjoy,8.3,VEGETARISCHE GERECHTEN (met witte rijst),
+158,,V2,Lo Han Zhai,11.2,VEGETARISCHE GERECHTEN (met witte rijst),"sojakaas, Chinese paddenstoelen en groenten in knoflooksaus"
+159,,V3,Vegetarische Foe Yong Hai,8.3,VEGETARISCHE GERECHTEN (met witte rijst),
+160,,K1,"Frites, sat&eacute; (2st.) en ei",6.5,KINDERMENUS,
+161,,K2,"Frites, kippootje en ei",6.5,KINDERMENUS,
+162,,K3,"Frites, mini loempia (2st.) en ei",6.5,KINDERMENUS,
+163,,K4,Kinder Bami of Nasi met sat&eacute; (2st.) en ei,6.5,KINDERMENUS,
+164,,R1,Indische rijsttafel (voor 1 persoon),16.4,RIJSTTAFELS,"Gado gado, Foe Yong Hai, sat&eacute;, Daging Roedjak, Daging Smoor, Ajam Ketjap, Atjar, Pisang Goreng, Pindas en Cocos"
+165,,R2,Indische rijsttafel<br>Vanaf 2 personen... Per persoon,15,RIJSTTAFELS,"Ajam Ketjap, Gado Gado, Daging Smoor, Kroepoek, Daging Roedjak, Foe Yong Hai, Sat&eacute;, Sambal Goreng Boontjes, Sambal Goreng Kering, Atjar, Pisang Goreng, Pinda en Cocos"
+167,,R3,Chinese Indische Rijsttafel<br>Vanaf 4 personen... per persoon,16.5,RIJSTTAFELS,"Foe Yong Hai, Babi Pangang, Tjap Tjoy, Koe Loe Yuk, Ajam Ketjap, Daging Smoor, Daging Roedjak, Sat&eacute;, Ei, Kroepoek, Sambal Goeren boontjes, Atjar, Pisang Goreng, Pinda en Cocos"
+168,,R4,Chinese Rijsttafel<br>Vanaf 2 personen... per persoon,17,RIJSTTAFELS,"Kippen- of Tomatensoep, Tjap Tjoy met kipfilet, Koe Loe Yuk, Gebakken garnalen, Babi Pangang, Foe Yong Hai, sat&eacute;, kroepoek"
+169,,R5,Kantones Rijsttafel<br>Vanaf 2 personen... per persoon,23,RIJSTTAFELS,"Wan Tan soep, Chinese Dim Sum (mini loempia, kerrie ko, pangsit goreng, garnalen, pasteitje), Geroosterde Peking Eend, Lychee Kai (licht gebraden kipfilet met lychee in zoetzure saus), Tau Sie Haa (garnalen met zwarte bonensaus)"
+170,,R6,Sze Chuan Rijsttafel<br>Vanaf 2 personen... per persoon,23,RIJSTTAFELS,"Peking Soep (pittige lichtzure soep), Chinese Dim Sum (mini loempia, kerrie ko, pangsit goreng, garnalen, pastei(tje), Tjieuw Yem Kai (licht gebakken kipfilet met zout en peper), Lychee Yuk (licht gebraden varkensvlees met lychee in zoetzure saus), Yu Sian Ngau Yuk (ossenhaas met licht zoet pikante kruiden saus)"
+171,,,"Buffet Menu A, per persoon",12.8,BUFFET,"Mini Loempia's, Pisang Goreng, Babi Pangang, Koe Loe Yuk, Foe Yong Hai, Kipfilet met zwarte bonensaus, Tjap Tjoy met kipfilet, sat&eacute; Ajam"
+172,,,"Buffet Menu B, per persoon",15,BUFFET,"Mini Loempia's, Pisang Goreng, Babi Pangang, Foe Yong Hai, Kung Bao Kai, Hong Shau Yu, sat&eacute; Ajam, Ossenhaas met zwarte bonensaus, Kipfilet met kerriesaus"
+173,,,Bami of Nasi Goreng ipv rijst,0.9,DIVERSEN,
+174,,,Mihoen Goreng ipv rijst,2.5,DIVERSEN,
+175,,,Chinese Bami ipv rijst,2.5,DIVERSEN,
