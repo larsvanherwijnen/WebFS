@@ -148,7 +148,7 @@ class ImportCsv extends Command
         return $menuData;
     }
 
-    private function saveToDatabase($data, $types)
+    private function saveToDatabase($data, $types): void
     {
         $data->collect()->each(function ($item) use ($types) {
             $dishType = $types->firstWhere('name', $item['dish_type']);
