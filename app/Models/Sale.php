@@ -10,7 +10,7 @@ class Sale extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['quantity', 'created_at', 'updated_at'];
+    protected $fillable = ['dish_id','quantity', 'created_at', 'updated_at'];
 
     public function product(): BelongsTo
     {

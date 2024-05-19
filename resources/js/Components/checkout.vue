@@ -63,7 +63,6 @@
 
 <script>
 import axios from 'axios';
-
 export default {
     data() {
         return {
@@ -127,8 +126,6 @@ export default {
                     alert('Order placed successfully!');
                 })
                 .catch(error => {
-                    toastr.success('you are logged in');
-
                     console.error('Error placing order:', error);
                     alert('Failed to place order.');
                 });
