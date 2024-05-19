@@ -58,6 +58,8 @@
                 <button @click="deleteOrder" class="bg-red-500 p-2 rounded text-sm">Verwijderen</button>
             </div>
         </div>
+
+
     </div>
 </template>
 
@@ -120,7 +122,7 @@ export default {
             }
         },
         placeOrder() {
-            axios.post('/api/orders', { items: this.order })
+            axios.post('/api/sales', { items: this.order })
                 .then(() => {
                     this.order = [];
                     alert('Order placed successfully!');

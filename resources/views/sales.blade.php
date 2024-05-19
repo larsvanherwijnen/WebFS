@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
-@section('title', 'Kassa')
+@section('title', 'Verkoop overzicht')
 
 @section('content')
-    <checkout />
+    <sales />
 @endsection
