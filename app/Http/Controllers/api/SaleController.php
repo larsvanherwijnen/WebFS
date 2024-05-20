@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Enums\OrderStatuses;
+use App\Enums\OrderTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
-use App\Models\Sale;
+use App\Models\Order;
+use App\Models\OrderLine;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,7 +24,7 @@ class SaleController extends Controller
         $startDate = Carbon::parse($startDate)->startOfDay();
         $endDate = Carbon::parse($endDate)->endOfDay();
 
-        $sales = Sale::with('dish')->whereBetween('created_at', [$startDate, $endDate])->get();
+        $sales = OrderLine::with('dish')->whereBetween('created_at', [$startDate, $endDate])->get();
 
         $total = $sales->sum(function ($sale) {
             return $sale->dish->price * $sale->quantity;
@@ -56,9 +59,20 @@ class SaleController extends Controller
      */
     public function store(StoreOrderRequest $request): JsonResponse
     {
-        collect($request->items)->each(function ($item) {
-            Sale::create(['dish_id' => $item['id'], 'quantity' => $item['quantity']]);
+        $order = Order::create([
+            'order_type' => OrderTypes::TakeOut,
+            'order_status' => OrderStatuses::Pending
+        ]);
+
+        $orderlines = collect($request->items)->map(function ($item) {
+            return [
+                'dish_id' => $item['id'],
+                'quantity' => $item['quantity'],
+            ];
         });
+
+        $order->orderLines()->createMany($orderlines);
+
 
         return response()->json(['message' => 'Order created successfully'], 201);
     }

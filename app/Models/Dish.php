@@ -27,9 +27,9 @@ class Dish extends Model
         return $this->belongsTo(DishType::class);
     }
 
-    public function sales(): HasMany
+    public function orderlines(): HasMany
     {
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(OrderLine::class);
     }
 
     protected function priceFormatted(): Attribute

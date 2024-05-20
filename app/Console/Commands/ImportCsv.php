@@ -2,9 +2,14 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\OrderStatuses;
+use App\Enums\OrderTypes;
 use App\Models\DishType;
 use App\Models\DishTypes;
 use App\Models\Dish;
+use App\Models\Order;
+use App\Models\OrderStatus;
+use App\Models\OrderType;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
@@ -53,7 +58,6 @@ class ImportCsv extends Command
         $this->info('Data imported successfully.');
     }
 
-
     private function getMenuItems($file): Collection
     {
         $menuData = collect();
@@ -97,7 +101,7 @@ class ImportCsv extends Command
                 }
 
                 $salesData->push([
-                    'product_id' => $data[1],
+                    'dish_id' => $data[1],
                     'quantity' => $data[2],
                     'created_at' => $data[3],
                     'updated_at' => $data[3]
@@ -125,9 +129,9 @@ class ImportCsv extends Command
 
     private function coupleData($menuData, $salesData): Collection
     {
-        $groupedSalesData = $salesData->groupBy('product_id');
+        $groupedSalesData = $salesData->groupBy('dish_id');
         // Transform sales data into associative array structure
-        $groupedSalesData = $groupedSalesData->map(function ($sales, $productId) {
+        $groupedSalesData = $groupedSalesData->map(function ($sales) {
             return $sales->toArray();
         });
 
@@ -152,7 +156,7 @@ class ImportCsv extends Command
         $data->collect()->each(function ($item) use ($types) {
             $dishType = $types->firstWhere('name', $item['dish_type']);
 
-            $product = Dish::create([
+            Dish::create([
                 'name' => $item['name'],
                 'price' => $item['price'],
                 'description' => $item['description'],
@@ -161,7 +165,15 @@ class ImportCsv extends Command
                 'dish_type_id' => $dishType->id
             ]);
 
-            $product->sales()->createMany($item['sales']);
+
+            Collect($item['sales'])->groupBy('created_at')->map(function($sales){
+                $order = Order::create([
+                    'order_type' => OrderTypes::Imported,
+                    'order_status' => OrderStatuses::Completed
+                ]);
+                $order->orderLines()->createMany($sales);
+            });
+
         });
     }
 
