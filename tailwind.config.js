@@ -9,6 +9,7 @@ export default {
         extend: {
             colors: {
                 'blue-gray-50/50': '#eceff180',
+                'webfs-gray': '#f7f7f7',
             }
         },
     },
