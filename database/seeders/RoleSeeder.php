@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\Roles;
+use App\Models\Role;
 use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
@@ -13,7 +14,7 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         foreach (Roles::values() as $status) {
-            \App\Models\Role::create([
+            Role::create([
                 'role' => $status
             ]);
         }
