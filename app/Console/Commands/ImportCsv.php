@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\DishType;
 use App\Models\DishTypes;
-use App\Models\Product;
+use App\Models\Dish;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
@@ -126,7 +126,6 @@ class ImportCsv extends Command
     private function coupleData($menuData, $salesData): Collection
     {
         $groupedSalesData = $salesData->groupBy('product_id');
-
         // Transform sales data into associative array structure
         $groupedSalesData = $groupedSalesData->map(function ($sales, $productId) {
             return $sales->toArray();
@@ -153,7 +152,7 @@ class ImportCsv extends Command
         $data->collect()->each(function ($item) use ($types) {
             $dishType = $types->firstWhere('name', $item['dish_type']);
 
-            $product = Product::create([
+            $product = Dish::create([
                 'name' => $item['name'],
                 'price' => $item['price'],
                 'description' => $item['description'],
@@ -164,8 +163,6 @@ class ImportCsv extends Command
 
             $product->sales()->createMany($item['sales']);
         });
-
-
     }
 
 }
