@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('table_id')->nullable()->constrained();
             $table->string('order_type');
-            $table->foreign('order_type')->references('type')->on('order_types');
             $table->string('order_status');
-            $table->foreign('order_status')->references('status')->on('order_statuses');
             $table->timestamps();
+            
+            $table->foreign('order_type')->references('type')->on('order_types');
+            $table->foreign('order_status')->references('status')->on('order_statuses');
         });
     }
 
