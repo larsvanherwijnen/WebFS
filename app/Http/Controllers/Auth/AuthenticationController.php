@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends Controller
 {
-    public function login(Request $request): RedirectResponse
+    public function login(Request $request)
     {
 
         $credentials = $request->only('email', 'password');
@@ -26,6 +26,7 @@ class AuthenticationController extends Controller
 
 
     }
+
     public function logout(): RedirectResponse
     {
         Auth::logout();
