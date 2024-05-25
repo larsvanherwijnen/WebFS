@@ -14,9 +14,8 @@
 </head>
 <body id="app" class="min-h-screen bg-blue-gray-50/50">
 @include('partials.cashier.menu')
-<main class="p-4 xl:ml-80">
+<main class="p-4">
     @yield('content')
-
 </main>
 @vite(['resources/js/app.js'])
 
