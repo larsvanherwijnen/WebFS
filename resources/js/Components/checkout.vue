@@ -44,9 +44,9 @@
                             <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                                 <template v-for="(type, typeIndex) in types" :key="typeIndex">
                                     <li class="flex items-center">
-                                        <input :id="type.id" type="checkbox" :value="type.id" @change="fetchDishes"
+                                        <input :id="'checkbox'+type.id" type="checkbox" @change="fetchDishes"
                                                class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label :for="type.id"
+                                        <label :for="'checkbox'+type.id"
                                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ type.name }}</label>
                                     </li>
                                 </template>
@@ -70,7 +70,7 @@
                             <th :colspan="2">{{ type.name }}</th>
                         </tr>
                         <tr v-for="dish in type.dishes" :key="dish.id">
-                            <td v-html="dish.name"></td>
+                            <td v-html="dish.name + ' - ('+dish.menu_number+')'"></td>
                             <td v-html="dish.price"></td>
                             <td>
                                 <button class="bg-green-600 p-2 rounded text-sm" @click="addToOrder(dish)">Toevoegen
@@ -161,12 +161,14 @@ export default {
             };
 
             // Add selected filter values to params.filters array
-            this.types.forEach((type, index) => {
-                const checkbox = document.getElementById(type.id);
+            this.types.forEach((type) => {
+                const checkbox = document.getElementById('checkbox'+type.id);
                 if (checkbox.checked) {
                     params.filters.push(type.id);
                 }
             });
+
+
 
             axios.get('/api/dishes',  { params })
                 .then(response => {

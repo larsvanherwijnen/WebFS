@@ -7,6 +7,7 @@ use App\Http\Resources\DishResource;
 use App\Models\Dish;
 use App\Models\DishType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class DishesController extends Controller
 {
@@ -31,7 +32,7 @@ class DishesController extends Controller
 
         // Search dishes by name
         if (!empty($search)) {
-            $query->where('name', 'like', '%'.$search.'%');
+            $query->whereAny(['name', 'menu_number' ], 'like', '%'.$search.'%');
         }
 
         // Get dishes
