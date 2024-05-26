@@ -163,7 +163,7 @@ export default {
             // Add selected filter values to params.filters array
             this.types.forEach((type) => {
                 const checkbox = document.getElementById('checkbox'+type.id);
-                if (checkbox.checked) {
+                if (checkbox && checkbox.checked) {
                     params.filters.push(type.id);
                 }
             });
