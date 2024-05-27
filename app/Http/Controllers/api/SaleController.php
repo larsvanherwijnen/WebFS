@@ -77,4 +77,15 @@ class SaleController extends Controller
 
         return response()->json(['message' => 'Order created successfully'], 201);
     }
+
+
+    /**
+     * Display the specified resource.
+     */
+    public function mostUsedNotes(): JsonResponse
+    {
+        $notes = OrderLine::select('note')->whereNotNull('note')->groupBy('note')->orderByRaw('COUNT(*) DESC')->limit(5)->get();
+
+        return response()->json($notes);
+    }
 }
