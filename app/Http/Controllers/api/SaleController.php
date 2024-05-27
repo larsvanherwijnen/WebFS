@@ -68,6 +68,7 @@ class SaleController extends Controller
             return [
                 'dish_id' => $item['id'],
                 'quantity' => $item['quantity'],
+                'note' => $item['note']
             ];
         });
 

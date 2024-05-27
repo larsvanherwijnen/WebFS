@@ -21,7 +21,8 @@
                             <td v-html="dish.name"></td>
                             <td v-html="dish.price"></td>
                             <td>
-                                <button class="bg-green-600 p-2 rounded text-sm" @click="addToOrder(dish)">Toevoegen</button>
+                                <button class="bg-green-600 p-2 rounded text-sm" @click="addToOrder(dish)">Toevoegen
+                                </button>
                             </td>
                         </tr>
                     </template>
@@ -37,6 +38,7 @@
                     <tr>
                         <th>Gerecht</th>
                         <th>Aantal</th>
+                        <th>Opmerking</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -44,10 +46,14 @@
                     <tr v-for="(item, index) in order" :key="index">
                         <td v-html="item.name"></td>
                         <td>{{ item.quantity }}</td>
+                        <td>
+                            <input type="text" v-model="item.note" class="border-2 border-amber-400">
+                        </td>
                         <td class="flex gap-3">
                             <button class="bg-blue-600 p-2 rounded text-sm" @click="decreaseQuantity(index)">-</button>
                             <button class="bg-blue-600 p-2 rounded text-sm" @click="increaseQuantity(index)">+</button>
-                            <button class="bg-red-500 p-2 rounded text-sm" @click="removeFromOrder(index)">Remove</button>
+                            <button class="bg-red-500 p-2 rounded text-sm" @click="removeFromOrder(index)">Remove
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -58,13 +64,12 @@
                 <button @click="deleteOrder" class="bg-red-500 p-2 rounded text-sm">Verwijderen</button>
             </div>
         </div>
-
-
     </div>
 </template>
 
 <script>
 import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -105,7 +110,7 @@ export default {
             if (orderItem) {
                 orderItem.quantity++;
             } else {
-                this.order.push({ ...dish, quantity: 1 });
+                this.order.push({...dish, quantity: 1, note: ''});
             }
         },
         removeFromOrder(index) {
@@ -122,7 +127,7 @@ export default {
             }
         },
         placeOrder() {
-            axios.post('/api/sales', { items: this.order })
+            axios.post('/api/sales', {items: this.order})
                 .then(() => {
                     this.order = [];
                     alert('Order placed successfully!');
