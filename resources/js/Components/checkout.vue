@@ -1,8 +1,60 @@
 <template>
-    <div
-        class="bg-white flex shadow-sm -translate-x-80 h-[35rem] rounded-xl transition-transform duration-300 xl:translate-x-0 border border-blue-gray-100 p-4">
-        <div class="h-full w-1/2 flex flex-col">
-            <h2 class="text-2xl font-bold">Gerechten </h2>
+    <div class="flex h-[35rem] gap-3">
+        <div class="bg-white shadow-sm h-full w-2/3 flex flex-col rounded">
+            <div class="flex justify-between p-4">
+                <span class="text-2xl font-bold">Gerechten </span>
+                <div class="flex space-x-2">
+                    <form class="flex items-center">
+                        <label for="simple-search" class="sr-only">Search</label>
+                        <div class="relative w-full">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                     fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                          clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <input v-model="searchQuery" @input="fetchDishes" type="text" id="simple-search"
+                                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                   placeholder="Search" required="">
+                        </div>
+                    </form>
+                    <div>
+                        <button id="filterDropdownButton" @click="toggleDropdown"
+                                class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                                type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                 class="h-4 w-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                      d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            Filter
+                            <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewbox="0 0 20 20"
+                                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path clip-rule="evenodd" fill-rule="evenodd"
+                                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+                            </svg>
+                        </button>
+                        <div id="filterDropdown"
+                             v-if="isDropdownOpen"
+                             class="z-10 absolute w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700">
+                            <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Kies categorie</h6>
+                            <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                                <template v-for="(type, typeIndex) in types" :key="typeIndex">
+                                    <li class="flex items-center">
+                                        <input :id="'checkbox'+type.id" type="checkbox" @change="fetchDishes"
+                                               class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                        <label :for="'checkbox'+type.id"
+                                               class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">{{ type.name }}</label>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="overflow-y-auto h-full mt-4">
                 <table class="w-full">
                     <thead>
@@ -18,7 +70,7 @@
                             <th :colspan="2">{{ type.name }}</th>
                         </tr>
                         <tr v-for="dish in type.dishes" :key="dish.id">
-                            <td v-html="dish.name"></td>
+                            <td v-html="dish.name + ' - ('+dish.menu_number+')'"></td>
                             <td v-html="dish.price"></td>
                             <td>
                                 <button class="bg-green-600 p-2 rounded text-sm" @click="addToOrder(dish)">Toevoegen
@@ -30,8 +82,10 @@
                 </table>
             </div>
         </div>
-        <div class="flex flex-col w-1/2 h-full">
-            <h2 class="text-2xl font-bold">Bestellen</h2>
+        <div class="flex flex-col w-1/3 h-full bg-white shadow-sm rounded">
+            <div class="flex justify-between p-4">
+                <span class="text-2xl font-bold">Bestelling </span>
+            </div>
             <div class="overflow-y-auto h-full mt-4">
                 <table class="w-full">
                     <thead>
@@ -49,7 +103,7 @@
                         <td>
                             <input type="text" v-model="item.note" class="border-2 border-amber-400">
                             <div>
-                                <select v-model="selectedNote[index]" @change="updateNoteFromSelection(index)">
+                                <select v-model="selectedNote[index]" @change="updateNoteFromSelection(index)" class="border border-amber-400">
                                     <option value="" disabled>Selecteer een opmerking</option>
                                     <option v-for="note in mostUsedNotes" :key="note" :value="note">{{ note.note }} </option>
                                 </select>
@@ -82,7 +136,12 @@ export default {
             dishes: [],
             mostUsedNotes: [],
             order: [],
-            selectedNote: []
+            selectedNote: [],
+            types: [],
+            selectedCategories: [],
+            isDropdownOpen: false,
+            searchQuery: ''
+
         };
     },
     computed: {
@@ -106,9 +165,25 @@ export default {
     },
     methods: {
         fetchDishes() {
-            axios.get('/api/dishes')
+            const params = {
+                filters: [], // Array to hold selected filter values
+                search: this.searchQuery // Search query entered by the user
+            };
+
+            // Add selected filter values to params.filters array
+            this.types.forEach((type) => {
+                const checkbox = document.getElementById('checkbox'+type.id);
+                if (checkbox && checkbox.checked) {
+                    params.filters.push(type.id);
+                }
+            });
+
+
+
+            axios.get('/api/dishes',  { params })
                 .then(response => {
-                    this.dishes = response.data;
+                    this.dishes = response.data.dishes;
+                    this.types = response.data.dishTypes;
                 })
                 .catch(error => {
                     console.error('Error fetching dishes:', error);
@@ -160,6 +235,9 @@ export default {
         },
         deleteOrder() {
             this.order = [];
+        },
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
         }
     }
 };
