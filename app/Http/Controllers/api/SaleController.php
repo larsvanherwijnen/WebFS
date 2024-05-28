@@ -6,11 +6,16 @@ use App\Enums\OrderStatuses;
 use App\Enums\OrderTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
+use App\Http\Resources\DishResource;
+use App\Http\Resources\SaleReportResource;
+use App\Models\Dish;
 use App\Models\Order;
 use App\Models\OrderLine;
+use App\Models\SaleReport;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Number;
 
 class SaleController extends Controller
@@ -30,7 +35,7 @@ class SaleController extends Controller
             return $sale->dish->price * $sale->quantity;
         });
 
-        $sales =  $sales->map(function ($sale) {
+        $sales = $sales->map(function ($sale) {
             return [
                 'date' => $sale->created_at,
                 'dish' => $sale->dish->name,
@@ -38,8 +43,6 @@ class SaleController extends Controller
                 'price' => $sale->dish->priceFormatted,
             ];
         });
-
-
 
         $tax = $total * 0.09;
 
@@ -52,6 +55,22 @@ class SaleController extends Controller
 
         return response()->json($data);
     }
+
+    public function exports(): string
+    {
+        $files = Storage::disk('public')->files('exports/sales');
+
+        // Get file details
+        $exports = array_map(function ($file) {
+            return [
+                'file_name' => basename($file),
+                'created_at' => Storage::disk('public')->lastModified($file),
+            ];
+        }, $files);
+
+        return json_encode($exports);
+    }
+
 
 
     /**
