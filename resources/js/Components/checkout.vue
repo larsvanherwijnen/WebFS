@@ -92,6 +92,7 @@
                     <tr>
                         <th>Gerecht</th>
                         <th>Aantal</th>
+                        <th>Opmerking</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -99,11 +100,18 @@
                     <tr v-for="(item, index) in order" :key="index">
                         <td v-html="item.name"></td>
                         <td>{{ item.quantity }}</td>
+                        <td>
+                            <input type="text" v-model="item.note" class="border-2 border-amber-400">
+                            <div>
+                                <select v-model="selectedNote[index]" @change="updateNoteFromSelection(index)" class="border border-amber-400">
+                                    <option value="" disabled>Selecteer een opmerking</option>
+                                    <option v-for="note in mostUsedNotes" :key="note" :value="note">{{ note.note }} </option>
+                                </select>
+                            </div>
+                        </td>
                         <td class="flex gap-3">
-                            <button class="bg-blue-600 p-2 rounded text-sm" @click="decreaseQuantity(index)">-
-                            </button>
-                            <button class="bg-blue-600 p-2 rounded text-sm" @click="increaseQuantity(index)">+
-                            </button>
+                            <button class="bg-blue-600 p-2 rounded text-sm" @click="decreaseQuantity(index)">-</button>
+                            <button class="bg-blue-600 p-2 rounded text-sm" @click="increaseQuantity(index)">+</button>
                             <button class="bg-red-500 p-2 rounded text-sm" @click="removeFromOrder(index)">Remove
                             </button>
                         </td>
@@ -126,12 +134,13 @@ export default {
     data() {
         return {
             dishes: [],
+            mostUsedNotes: [],
             order: [],
+            selectedNote: [],
             types: [],
             selectedCategories: [],
             isDropdownOpen: false,
             searchQuery: ''
-
 
         };
     },
@@ -152,6 +161,7 @@ export default {
     },
     created() {
         this.fetchDishes();
+        this.fetchMostUsedNotes();
     },
     methods: {
         fetchDishes() {
@@ -179,12 +189,21 @@ export default {
                     console.error('Error fetching dishes:', error);
                 });
         },
+        fetchMostUsedNotes() {
+            axios.get('/api/most-used-notes')
+                .then(response => {
+                    this.mostUsedNotes = response.data;
+                })
+                .catch(error => {
+                    console.error('Error fetching most-used notes:', error);
+                });
+        },
         addToOrder(dish) {
             const orderItem = this.order.find(item => item.id === dish.id);
             if (orderItem) {
                 orderItem.quantity++;
             } else {
-                this.order.push({...dish, quantity: 1});
+                this.order.push({...dish, quantity: 1, note: ''});
             }
         },
         removeFromOrder(index) {
@@ -192,6 +211,9 @@ export default {
         },
         increaseQuantity(index) {
             this.order[index].quantity++;
+        },
+        updateNoteFromSelection(index) {
+            this.order[index].note = this.selectedNote[index].note;
         },
         decreaseQuantity(index) {
             if (this.order[index].quantity > 1) {
