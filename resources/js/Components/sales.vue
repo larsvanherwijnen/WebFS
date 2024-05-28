@@ -60,9 +60,9 @@
                     <tbody>
                     <tr v-for="(report, index) in exports" :key="index">
                         <td>{{ report.file_name }}</td>
-                        <td>{{ formatDate(report.created_at) }}</td>
+                        <td>{{ report.created_at }}</td>
                         <td>
-                            <a :href="getDownloadLink(report.file_name)" target="_blank">Download</a>
+                            <a :href="report.url" target="_blank">Download</a>
                         </td>
                     </tr>
                     </tbody>
@@ -130,13 +130,6 @@ export default {
                     console.error('Error fetching exports:', error);
                 });
         },
-        getDownloadLink(fileName) {
-            return `/storage/exports/sales/${fileName}`;
-        },
-        formatDate(timestamp) {
-            const date = new Date(timestamp * 1000); // Convert from seconds to milliseconds
-            return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-        }
     }
 };
 </script>

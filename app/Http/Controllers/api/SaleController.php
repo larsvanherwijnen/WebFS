@@ -64,7 +64,8 @@ class SaleController extends Controller
         $exports = array_map(function ($file) {
             return [
                 'file_name' => basename($file),
-                'created_at' => Storage::disk('public')->lastModified($file),
+                'created_at' => Carbon::parse(Storage::disk('public')->lastModified($file))->format('Y-m-d H:i:s'),
+                'url' => Storage::disk('public')->url($file),
             ];
         }, $files);
 
