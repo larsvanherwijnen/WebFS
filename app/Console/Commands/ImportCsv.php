@@ -158,7 +158,7 @@ class ImportCsv extends Command
                 'price' => $item['price'],
                 'description' => $item['description'],
                 'menu_number' => empty($item['menu_number']) ? null : $item['menu_number'],
-                'menu_number_addition' => $item['menu_addition'],
+                'menu_number_addition' => empty($item['menu_addition']) ? null : $item['menu_addition'],
                 'dish_type_id' => $dishType->id,
             ]);
 

@@ -42,4 +42,18 @@ class Dish extends Model
             )
         );
     }
+
+    protected function dishCode(): Attribute
+    {
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => $attributes['menu_number'] ?? $attributes['menu_number_addition']
+        );
+    }
+
+    public function variants(): HasMany
+    {
+        return $this->hasMany(Dish::class, 'menu_number', 'menu_number')
+            ->whereNotNull('menu_number_addition');
+    }
+
 }
