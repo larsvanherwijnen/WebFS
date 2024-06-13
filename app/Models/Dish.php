@@ -14,12 +14,12 @@ class Dish extends Model
     use HasFactory;
 
     protected $fillable = [
-        "name",
-        "price",
-        "description",
-        "menu_number",
-        "menu_number_addition",
-        "dish_type_id",
+        'name',
+        'price',
+        'description',
+        'menu_number',
+        'menu_number_addition',
+        'dish_type_id',
     ];
 
     public function dishType(): BelongsTo
@@ -35,10 +35,10 @@ class Dish extends Model
     protected function priceFormatted(): Attribute
     {
         return Attribute::make(
-            get: fn(mixed $value, array $attributes) => Number::currency(
-                $attributes["price"],
-                "EUR",
-                "nl"
+            get: fn (mixed $value, array $attributes) => Number::currency(
+                $attributes['price'],
+                'EUR',
+                'nl'
             )
         );
     }

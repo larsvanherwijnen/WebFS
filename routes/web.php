@@ -13,6 +13,3 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], fu
 Route::view('/login', 'pages.auth.login')->name('login');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
-
-
-

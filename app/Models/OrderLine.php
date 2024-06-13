@@ -12,7 +12,7 @@ class OrderLine extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['dish_id','quantity','note','created_at', 'updated_at'];
+    protected $fillable = ['dish_id', 'quantity', 'note', 'created_at', 'updated_at'];
 
     protected $casts = [
     ];
@@ -21,7 +21,6 @@ class OrderLine extends Model
     {
         return $this->belongsTo(Dish::class);
     }
-
 
     protected function CreatedAt(): Attribute
     {

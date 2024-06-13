@@ -20,7 +20,7 @@ class DishResource extends JsonResource
             'name' => $this->name,
             'price' => Number::currency($this->price, 'EUR', 'nl'),
             'description' => $this->description,
-            'menu_number' => $this->menu_number . ($this->menu_number_addition ? '' . $this->menu_number_addition : ''),
+            'menu_number' => $this->menu_number.($this->menu_number_addition ? ''.$this->menu_number_addition : ''),
             'dish_type' => new DishTypeResource($this->dishType),
         ];
     }

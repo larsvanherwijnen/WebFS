@@ -14,8 +14,9 @@ class OrderType extends Model
     protected $fillable = ['type'];
 
     protected $casts = [
-        'type' => OrderTypes::class
+        'type' => OrderTypes::class,
     ];
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

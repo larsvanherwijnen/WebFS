@@ -4,15 +4,11 @@ namespace App\Console\Commands;
 
 use App\Enums\OrderStatuses;
 use App\Enums\OrderTypes;
-use App\Models\DishType;
-use App\Models\DishTypes;
 use App\Models\Dish;
+use App\Models\DishType;
 use App\Models\Order;
-use App\Models\OrderStatus;
-use App\Models\OrderType;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 
 class ImportCsv extends Command
 {
@@ -38,8 +34,9 @@ class ImportCsv extends Command
         $menuFile = storage_path('Legacy/Data/menu.csv');
         $salesFile = storage_path('Legacy/Data/sales.csv');
 
-        if (!file_exists($menuFile) || !file_exists($salesFile)) {
+        if (! file_exists($menuFile) || ! file_exists($salesFile)) {
             $this->error('CSV files not found');
+
             return;
         }
 
@@ -63,10 +60,11 @@ class ImportCsv extends Command
         $menuData = collect();
         $headerSkipped = false;
 
-        if (($handle = fopen($file, 'r')) !== FALSE) {
-            while (($data = fgetcsv($handle)) !== FALSE) {
-                if (!$headerSkipped) {
+        if (($handle = fopen($file, 'r')) !== false) {
+            while (($data = fgetcsv($handle)) !== false) {
+                if (! $headerSkipped) {
                     $headerSkipped = true;
+
                     continue;
                 }
 
@@ -77,7 +75,7 @@ class ImportCsv extends Command
                     'name' => $data[3],
                     'price' => $data[4],
                     'dish_type' => $data[5],
-                    'description' => $data[6]
+                    'description' => $data[6],
                 ]);
             }
 
@@ -87,16 +85,16 @@ class ImportCsv extends Command
         return $menuData;
     }
 
-
     private function getSalesData($file): Collection
     {
         $salesData = collect();
         $headerSkipped = false;
 
-        if (($handle = fopen($file, 'r')) !== FALSE) {
-            while (($data = fgetcsv($handle)) !== FALSE) {
-                if (!$headerSkipped) {
+        if (($handle = fopen($file, 'r')) !== false) {
+            while (($data = fgetcsv($handle)) !== false) {
+                if (! $headerSkipped) {
                     $headerSkipped = true;
+
                     continue;
                 }
 
@@ -104,7 +102,7 @@ class ImportCsv extends Command
                     'dish_id' => $data[1],
                     'quantity' => $data[2],
                     'created_at' => $data[3],
-                    'updated_at' => $data[3]
+                    'updated_at' => $data[3],
                 ]);
             }
 
@@ -122,7 +120,6 @@ class ImportCsv extends Command
         $dishTypes->each(function ($dishType) {
             DishType::firstOrCreate(['name' => $dishType]);
         });
-
 
         return DishType::all();
     }
@@ -162,19 +159,17 @@ class ImportCsv extends Command
                 'description' => $item['description'],
                 'menu_number' => empty($item['menu_number']) ? null : $item['menu_number'],
                 'menu_number_addition' => $item['menu_addition'],
-                'dish_type_id' => $dishType->id
+                'dish_type_id' => $dishType->id,
             ]);
 
-
-            Collect($item['sales'])->groupBy('created_at')->map(function($sales){
+            Collect($item['sales'])->groupBy('created_at')->map(function ($sales) {
                 $order = Order::create([
                     'order_type' => OrderTypes::Imported,
-                    'order_status' => OrderStatuses::Completed
+                    'order_status' => OrderStatuses::Completed,
                 ]);
                 $order->orderLines()->createMany($sales);
             });
 
         });
     }
-
 }
