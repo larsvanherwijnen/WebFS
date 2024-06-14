@@ -14,6 +14,8 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rules\Unique;
 use Livewire\Component;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 
@@ -39,6 +41,7 @@ class UpdateDish extends Component implements HasForms
                     TextInput::make('name')
                         ->required(),
                     TextInput::make('price')
+                        ->numeric()
                         ->required(),
                     Textarea::make('description')
                         ->required(),
@@ -47,7 +50,7 @@ class UpdateDish extends Component implements HasForms
                         ->required(),
                     TextInput::make('menu_number')
                         ->required()
-                        ->disabled()
+                        ->readOnly()
                         ->unique(ignoreRecord: true),
                 ]),
                 Section::make('Varianten')->schema([
@@ -57,16 +60,12 @@ class UpdateDish extends Component implements HasForms
                                 TextInput::make('name')
                                     ->required(),
                                 TextInput::make('price')
+                                    ->numeric()
                                     ->required(),
                                 Textarea::make('description')
                                     ->required(),
                                 TextInput::make('menu_number')->hidden()->dehydrated(),
                                 TextInput::make('menu_number_addition')
-                                    ->default(function (Get $get) {
-                                        return 'a';
-                                    })
-                                    ->disabled()
-                                    ->dehydrated()
                                     ->required(),
                             ])->columnSpanFull(),
                         ])->addActionLabel('Add Variant')
@@ -82,22 +81,19 @@ class UpdateDish extends Component implements HasForms
 
         $variants = collect($data['variants']);
 
-        // Process each variant
         $variants->each(function ($variant) use ($data) {
+            $variant['menu_number'] = $data['menu_number'];
             $variant['dish_type_id'] = $data['dish_type_id'];
-
-            // Check if the variant has an id
             if (isset($variant['id'])) {
-                // Find the existing variant and update it
                 $existingVariant = $this->dish->variants()->find($variant['id']);
                 if ($existingVariant) {
                     $existingVariant->update($variant);
                 }
             } else {
-                // Create a new variant
                 $this->dish->variants()->create($variant);
             }
         });
+
 
         // Optionally, you might want to delete variants that were removed
         $existingVariantIds = $this->dish->variants()->pluck('id')->toArray();

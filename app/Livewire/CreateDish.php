@@ -13,6 +13,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Illuminate\Validation\Rules\Unique;
 use Livewire\Component;
 
 class CreateDish extends Component implements HasForms
@@ -34,6 +36,7 @@ class CreateDish extends Component implements HasForms
                     TextInput::make('name')
                         ->required(),
                     TextInput::make('price')
+                        ->numeric()
                         ->required(),
                     Textarea::make('description')
                         ->required(),
@@ -42,7 +45,7 @@ class CreateDish extends Component implements HasForms
                         ->required(),
                     TextInput::make('menu_number')
                         ->required()
-                        ->unique(ignoreRecord: true),
+                        ->unique('dishes', 'menu_number'),
                 ]),
                 Section::make('Varianten')->schema([
                     Repeater::make('variants')
@@ -51,12 +54,16 @@ class CreateDish extends Component implements HasForms
                                 TextInput::make('name')
                                     ->required(),
                                 TextInput::make('price')
+                                    ->numeric()
                                     ->required(),
                                 Textarea::make('description')
                                     ->required(),
                                 TextInput::make('menu_number_addition')
-                                    ->disabled()
-                                    ->dehydrated()
+//                                    ->unique('dishes', 'menu_number_addition')
+                                    ->unique(modifyRuleUsing: function (Unique $rule, Get $get, $value) {
+                                        return $rule->where('menu_number', $get('menu_number'))
+                                            ->where('menu_number_addition', $value);
+                                    })
                                     ->required(),
                             ])->columnSpanFull(),
                         ])->addActionLabel('Add Variant')
@@ -67,8 +74,6 @@ class CreateDish extends Component implements HasForms
     public function create(): void
     {
         $data = $this->form->getState();
-
-        dd($data);
 
         $dish = Dish::create($data);
 
