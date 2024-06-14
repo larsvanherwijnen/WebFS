@@ -18,7 +18,7 @@ class TabletIdentification
     {
         // Check if the user has identified the tablet. The identifier is stored in the session.
         $tablet = session()->get('tablet');
-        if (!$tablet or Table::where('identifier', $tablet)->doesntExist()) {
+        if (!$tablet or Table::where('tabletId', $tablet)->doesntExist()) {
             return redirect()->route('tablet.identify');
         }
         return $next($request);

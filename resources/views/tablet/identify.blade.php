@@ -1,12 +1,15 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
-<div class="flex flex-col justify-center items-center h-screen bg-gray-200">
+@section('title', 'Identificeer tablet')
+
+@section('content')
+<div class="flex flex-col justify-center items-center h-screen w-full bg-gray-200 text-gray-800">
     @if (session('error'))
         <div class="bg-red-500 p-4 rounded-md mb-6 text-white text-center text-xl">
             {{ session('error') }}
         </div>
     @endif
-    <section class="bg-white p-6 rounded-md">
+    <section class="bg-white p-6 rounded-md shadow-sm">
         <h1 class="font-bold text-2xl">Identificeer tablet</h1>
         <form method="POST" action="{{ route('tablet.identify.store') }}" class="flex flex-col">
             @csrf
@@ -19,3 +22,4 @@
         </form>
     </section>
 </div>
+@endsection
