@@ -13,6 +13,10 @@
                    class="{{ request()->routeIs('admin.sales') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Verkoop overzicht</a>
             </li>
             <li class="me-2 flex">
+                <a href="{{ route('admin.dishes') }}"
+                   class="{{ request()->routeIs('admin.dishes') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Gerechten</a>
+            </li>
+            <li class="me-2 flex">
                 <a href="{{ route('logout') }}"
                    class="{{ request()->routeIs('logout') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Uitloggen</a>
             </li>

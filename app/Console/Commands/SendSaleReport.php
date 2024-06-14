@@ -41,7 +41,6 @@ class SendSaleReport extends Command
             'file_path' => $filePath,
         ]);
 
-
         Excel::store((new SalesReportExport)->forDate($date), "public/exports/sales/sales_report-$displayDate.xlsx");
 
         if ($admin) {

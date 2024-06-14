@@ -6,7 +6,6 @@ use App\Traits\EnumToArray;
 
 enum OrderStatuses: string
 {
-
     use EnumToArray;
     case Active = 'active';
     case Pending = 'pending';
