@@ -45,8 +45,6 @@
                                 <span v-html="dish.price"></span>
                                 <button @click="selectedDishes.push(dish)"
                                     class="bg-green-500 hover:bg-green-400 px-4 rounded-md m-0.5">+</button>
-                                <button @click="removeFromOrder(dish)"
-                                    class="bg-red-500 hover:bg-red-400 px-4 rounded-md m-0.5">-</button>
                             </div>
                         </div>
                     </div>
@@ -83,6 +81,28 @@
                     <p class="self-center">Geen gerechten gevonden</p>
                 </div>
             </div>
+
+            <div>
+                <h1 class="text-xl">Laatst bestelde gerechten</h1>
+                <div v-if="latestOrders['order_lines']">
+                    <div class="bg-gray-100 px-4 py-1 rounded-sm">
+                        <div v-for="dish in latestOrders['order_lines']" :key="dish.id" class="flex justify-between">
+                            <p v-html="dish.name"></p>
+                            <div class="space-x-2">
+                                <span v-html="dish.price"></span>
+                                <button @click="selectedDishes.push(dish)"
+                                    class="px-4 bg-green-500 hover:bg-green-400 m-0.5 rounded-md text-center">+</button>
+                                <button @click="addToFavorites(dish)"
+                                    class="px-4 bg-yellow-500 hover:bg-yellow-400 m-0.5 rounded-md text-center">*</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else class="flex flex-col py-4 px-2 bg-gray-100 rounded-sm w-full">
+                    <p class="self-center">Geen gerechten gevonden</p>
+                </div>
+            </div>
         </section>
     </div>
 </template>
@@ -99,6 +119,7 @@ export default {
             dishTypes: [],
             selectedDishes: [],
             favorites: [],
+            latestOrders: [],
         }
     },
     computed: {
@@ -125,6 +146,10 @@ export default {
     },
     created() {
         this.fetchDishes();
+        this.fetchOrders();
+        this.favorites = this.fetchFavorites();
+    },
+    mounted() {
         this.favorites = this.fetchFavorites();
     },
     methods: {
@@ -143,6 +168,17 @@ export default {
                     console.log(error);
                 });
         },
+        fetchOrders() {
+            axios.get('/api/sales/table/' + this.table.id)
+                .then(response => {
+                    this.latestOrders = response.data;
+                    console.log(response.data)
+                    console.log(this.latestOrders['order_lines']);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         fetchFavorites() {
             return this.favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         },
@@ -150,13 +186,13 @@ export default {
             this.selectedDishes.splice(index, 1);
         },
         addToFavorites(dish) {
-            if (favorites.some(favorite => favorite.id === dish.id)) {
-                this.favorites = favorites.filter(favorite => favorite.id !== dish.id);
+            if (this.favorites.some(favorite => favorite.id === dish.id)) {
+                this.favorites = this.favorites.filter(favorite => favorite.id !== dish.id);
 
             } else {
                 this.favorites.push(dish);
             }
-            console.log(favorites);
+            console.log(this.favorites);
 
             localStorage.setItem('favorites', JSON.stringify(this.favorites));
         },

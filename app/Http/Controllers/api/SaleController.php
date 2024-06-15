@@ -136,6 +136,35 @@ class SaleController extends Controller
         return response()->json(['message' => 'Order created successfully'], 201);
     }
 
+    // A get request with tableId as parameter
+    public function tableOrders(string $tableId): JsonResponse
+    {
+        $orders = Order::where('table_id', $tableId)->where('order_status', OrderStatuses::Pending);
+
+        if (!$orders) {
+            return response()->json(['message' => 'No pending order found for this table'], 404);
+        }
+
+        $orderLines = $orders->with('orderLines.dish')->get();
+        // get all the orders their orderline dishes and their notes, and put them in a new list with each dish only once, put them all in a single list, not grouped by oder but by dish
+        foreach ($orderLines as $order) {
+            $dishList = $order->orderLines->map(function ($orderLine) {
+                return [
+                    'id' => $orderLine->dish->id,
+                    'name' => $orderLine->dish->name,
+                    'price' => $orderLine->dish->priceFormatted,
+                    'bare_price' => $orderLine->dish->price,
+                    'note' => $orderLine->note
+                ];
+            });
+        }
+
+        return response()->json([
+            'table_id' => $tableId,
+            'order_lines' => $dishList
+        ]);
+    }
+
     /**
      * Display the specified resource.
      */
