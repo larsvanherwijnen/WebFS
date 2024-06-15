@@ -28,17 +28,15 @@
 </head> -->
 @extends('layouts.app')
 
-@php
-    echo __('messages.test');
-@endphp
 
+{{ session('locale', App::getLocale()) }}
+{{__('global.test')}}
 @section('content')
-
-<body>
+    <body>
     <div class="flex items-center justify-between bg-red-700 py-3 px-5">
         <div class="flex items-center text-yellow-500 text-2xl">
             <img class="h-12" src="/images/dragon-small.png" alt="Golden Dragon">
-            <span class="font-chinese_takeawayregular ml-2">{{ __('messages.test') }}</span>
+            <span class="font-chinese_takeawayregular ml-2">{{ __('global.test') }}</span>
             <img class="h-12 ml-2" src="/images/dragon-small-flipped.png" alt="Golden Dragon">
         </div>
         <a href="paginas/aanbiedingen.html" class="font-bold">
@@ -73,11 +71,11 @@
             <h2 class="text-5xl font-bold">{{ __('De Gouden Draak') }}</h2>
             <div class="flex justify-center mt-5">
                 <a href="paginas/MENUKAART.html"
-                    class="mx-2 text-xl text-white bg-red-800 py-2 px-4 rounded-lg">{{ __('Menukaart') }}</a>
+                   class="mx-2 text-xl text-white bg-red-800 py-2 px-4 rounded-lg">{{ __('Menukaart') }}</a>
                 <a href="paginas/news.html"
-                    class="mx-2 text-xl text-white bg-red-800 py-2 px-4 rounded-lg">{{ __('Nieuws') }}</a>
+                   class="mx-2 text-xl text-white bg-red-800 py-2 px-4 rounded-lg">{{ __('Nieuws') }}</a>
                 <a href="paginas/contact.html"
-                    class="mx-2 text-xl text-white bg-red-800 py-2 px-4 rounded-lg">{{ __('Contact') }}</a>
+                   class="mx-2 text-xl text-white bg-red-800 py-2 px-4 rounded-lg">{{ __('Contact') }}</a>
             </div>
         </div>
     </div>
@@ -117,14 +115,14 @@
         <!-- call a post request to the route with name 'language.change' and add a button with the nl parameter and the en parameter in the route -->
         <!-- Make sure that the route has the "locale" parameter -->
 
-        <form action="{{ route('language.change') }}" method="POST">
+        <form action="{{ route('language.change') }}" method="POST" class="bg-green-500">
             @csrf
             <button type="submit" name="locale" value="nl"
-                class="text-yellow-500 text-xl">{{ __('Nederlands') }}</button>
+                    class="text-yellow-500 text-xl">{{ __('Nederlands') }}</button>
             <button type="submit" name="locale" value="en" class="text-yellow-500 text-xl">{{ __('English') }}</button>
         </form>
     </div>
-</body>
+    </body>
 
-</html>
+    </html>
 @endsection

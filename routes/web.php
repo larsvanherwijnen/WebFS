@@ -6,6 +6,7 @@ use App\Http\Controllers\TabletController;
 use App\Http\Middleware\TabletIdentification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -31,14 +32,15 @@ Route::post('/login', [AuthenticationController::class, 'login'])->name('login')
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 Route::post('/change-language', function (Request $request) {
-    if (!in_array($request->locale, ['en', 'nl'])) {
+    if (!in_array($request->input('locale'), ['en', 'nl'])) {
         abort(400);
     }
 
-    App::setLocale($request->locale);
+    session(['locale' => $request->input('locale')]);
 
-    return back();
+    return redirect()->route('home');
 })->name('language.change');
+
 
 
 

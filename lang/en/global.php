@@ -1,6 +1,6 @@
 <?php
 return [
-    'test' => 'test',
+    'test' => 'testdafdafadsfdsafsadfsadf',
     'The Golden Dragon' => 'The Golden Dragon',
     'De Gouden Draak' => 'The Golden Dragon',
     'Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!' => 'Welcome to The Golden Dragon. Click on this text to see this week\'s offers!',
