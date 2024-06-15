@@ -1,0 +1,27 @@
+<?php
+return [
+    'test' => 'test',
+    'The Golden Dragon' => 'The Golden Dragon',
+    'De Gouden Draak' => 'The Golden Dragon',
+    'Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!' => 'Welcome to The Golden Dragon. Click on this text to see this week\'s offers!',
+    'Chinees Indische Specialiteiten' => 'Chinese Indonesian Specialties',
+    'Menukaart' => 'Menu',
+    'Nieuws' => 'News',
+    'Contact' => 'Contact',
+    'Al jaren is De Gouden Draak een begrip als het gaat om de beste afhaalgerechten in \'s-Hertogenbosch. Graag trakteren we u op authentieke gerechten uit de Cantonese keuken.' => 'For years, The Golden Dragon has been known for the best takeaway dishes in \'s-Hertogenbosch. We would like to treat you to authentic dishes from the Cantonese cuisine.',
+    'Speciale Studentenaanbieding' => 'Special Student Offer',
+    'Chinese Rijsttafel (2 personen)' => 'Chinese Rice Table (2 persons)',
+    'Maak een keuze uit 3 van onderstaande keuzegerechten:' => 'Choose 3 of the following dishes:',
+    'Koe Loe Yuk' => 'Koe Loe Yuk',
+    'Foe Yong Hai' => 'Foe Yong Hai',
+    'Tjap Tjoy' => 'Tjap Tjoy',
+    'Garnalen met Gebakken Knoflook' => 'Shrimps with Fried Garlic',
+    'Babi Pangang' => 'Babi Pangang',
+    'Kipfilet in Zwarte Bonen saus' => 'Chicken Fillet in Black Bean Sauce',
+    'Met witte rijst. (Nasi of bami voor meerprijs mogelijk.)' => 'With white rice. (Nasi or bami available for an extra charge.)',
+    'Prijs: €21,00' => 'Price: €21.00',
+    'Naar Contact' => 'To Contact',
+    'Select Language' => 'Select Language',
+    'English' => 'English',
+    'Dutch' => 'Dutch'
+];

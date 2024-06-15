@@ -1,0 +1,26 @@
+<?php
+return [
+    'The Golden Dragon' => 'De Gouden Draak',
+    'De Gouden Draak' => 'De Gouden Draak',
+    'Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!' => 'Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!',
+    'Chinees Indische Specialiteiten' => 'Chinees Indische Specialiteiten',
+    'Menukaart' => 'Menukaart',
+    'Nieuws' => 'Nieuws',
+    'Contact' => 'Contact',
+    'Al jaren is De Gouden Draak een begrip als het gaat om de beste afhaalgerechten in \'s-Hertogenbosch. Graag trakteren we u op authentieke gerechten uit de Cantonese keuken.' => 'Al jaren is De Gouden Draak een begrip als het gaat om de beste afhaalgerechten in \'s-Hertogenbosch. Graag trakteren we u op authentieke gerechten uit de Cantonese keuken.',
+    'Speciale Studentenaanbieding' => 'Speciale Studentenaanbieding',
+    'Chinese Rijsttafel (2 personen)' => 'Chinese Rijsttafel (2 personen)',
+    'Maak een keuze uit 3 van onderstaande keuzegerechten:' => 'Maak een keuze uit 3 van onderstaande keuzegerechten:',
+    'Koe Loe Yuk' => 'Koe Loe Yuk',
+    'Foe Yong Hai' => 'Foe Yong Hai',
+    'Tjap Tjoy' => 'Tjap Tjoy',
+    'Garnalen met Gebakken Knoflook' => 'Garnalen met Gebakken Knoflook',
+    'Babi Pangang' => 'Babi Pangang',
+    'Kipfilet in Zwarte Bonen saus' => 'Kipfilet in Zwarte Bonen saus',
+    'Met witte rijst. (Nasi of bami voor meerprijs mogelijk.)' => 'Met witte rijst. (Nasi of bami voor meerprijs mogelijk.)',
+    'Prijs: €21,00' => 'Prijs: €21,00',
+    'Naar Contact' => 'Naar Contact',
+    'Select Language' => 'Selecteer Taal',
+    'English' => 'Engels',
+    'Dutch' => 'Nederlands'
+];

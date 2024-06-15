@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TabletController;
 use App\Http\Middleware\TabletIdentification;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -27,6 +29,17 @@ Route::post('/identify', [TabletController::class, 'identifyStore'])->name('tabl
 Route::view('/login', 'pages.auth.login')->name('login');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
+Route::post('/change-language', function (Request $request) {
+    if (!in_array($request->locale, ['en', 'nl'])) {
+        abort(400);
+    }
+
+    App::setLocale($request->locale);
+
+    return back();
+})->name('language.change');
+
 
 
 
