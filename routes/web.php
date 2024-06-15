@@ -28,8 +28,13 @@ Route::get('/identify', [TabletController::class, 'identify'])->name('tablet.ide
 Route::post('/identify', [TabletController::class, 'identifyStore'])->name('tablet.identify.store');
 
 Route::view('/login', 'pages.auth.login')->name('login');
+Route::view('/contact', 'pages.contact')->name('contact');
+Route::view('/contact-new', 'pages.contact_new')->name('contact-new');
+Route::view('/news', 'pages.news')->name('news');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
+
 
 Route::post('/change-language', function (Request $request) {
     if (!in_array($request->input('locale'), ['en', 'nl'])) {
