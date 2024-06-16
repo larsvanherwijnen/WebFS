@@ -109,7 +109,6 @@ export default {
 
                 groupedDishes.push({ name: type.name, dishes });
             });
-            console.log(groupedDishes);
             return groupedDishes;
         },
         totalPrice() {
@@ -144,20 +143,25 @@ export default {
                 });
         },
         fetchFavorites() {
+            // if there is no favorites in the local storage, create the favorites array
+            if (!localStorage.getItem('favorites')) {
+                localStorage.setItem('favorites', JSON.stringify([]));
+            }
             return this.favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         },
         removeFromOrder(index) {
             this.selectedDishes.splice(index, 1);
         },
         addToFavorites(dish) {
-            if (favorites.some(favorite => favorite.id === dish.id)) {
+            if (this.favorites.some(favorite => favorite.id === dish.id)) {
                 this.favorites = favorites.filter(favorite => favorite.id !== dish.id);
 
             } else {
+                if (!this.favorites) {
+
+                }
                 this.favorites.push(dish);
             }
-            console.log(favorites);
-
             localStorage.setItem('favorites', JSON.stringify(this.favorites));
         },
         placeOrder() {

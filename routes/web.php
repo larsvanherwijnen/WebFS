@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\AuthenticationController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TabletController;
 use App\Http\Middleware\TabletIdentification;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -44,3 +43,4 @@ Route::post('/change-language', function (Request $request) {
 
     return redirect()->back();
 })->name('language.change');
+
