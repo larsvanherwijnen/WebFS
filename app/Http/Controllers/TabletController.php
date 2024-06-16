@@ -15,8 +15,6 @@ class TabletController extends Controller
         $table = Table::where('tabletId', $tabletId)->first();
 
         if (! $tabletId or ! $table) {
-            dd($tabletId, $table);
-
             return view('tablet.identify')->with('error', 'Tafel niet gevonden. Probeer opnieuw.');
         }
         if ($table) {
