@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'title' => 'De Gouden Draak',
+    'restaurant_name' => 'De Gouden Draak',
+    'welcome_message' => 'Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!',
+    'specialties' => 'Chinees Indische Specialiteiten',
+    'menu' => 'Menukaart',
+    'news' => 'Nieuws',
+    'contact' => 'Contact',
+    'description' => 'Al jaren is De Gouden Draak een begrip als het gaat om de beste afhaalgerechten in \'s-Hertogenbosch. <br>Graag trakteren we u op authentieke gerechten uit de Cantonese keuken.',
+    'student_offer' => 'Speciale Studentenaanbieding',
+    'rice_table' => 'Chinese Rijsttafel (2 personen)',
+    'choose_dishes' => 'Maak een keuze uit 3 van onderstaande keuzegerechten:',
+    'dish_koe_loe_yuk' => 'Koe Loe Yuk',
+    'dish_foe_yong_hai' => 'Foe Yong Hai',
+    'dish_tjap_tjoy' => 'Tjap Tjoy',
+    'dish_shrimps_garlic' => 'Garnalen met Gebakken Knoflook',
+    'dish_babi_pangang' => 'Babi Pangang',
+    'dish_chicken_black_bean' => 'Kipfilet in Zwarte Bonen saus',
+    'with_rice' => 'Met witte rijst. (Nasi of bami voor meerprijs mogelijk.)',
+    'location' => 'De Gouden Draak is eenvoudig te vinden, vlak bij het centrum, 5 minuten lopen achter het centraal station.',
+    'price' => 'Prijs: €21,00',
+    'to_contact' => 'Naar Contact',
+    'select_language' => 'Selecteer Taal',
+    'english' => 'Engels',
+    'dutch' => 'Nederlands',
+];

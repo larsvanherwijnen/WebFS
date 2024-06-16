@@ -162,7 +162,6 @@ export default {
                 }
                 this.favorites.push(dish);
             }
-
             localStorage.setItem('favorites', JSON.stringify(this.favorites));
         },
         placeOrder() {
