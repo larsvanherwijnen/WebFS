@@ -12,7 +12,7 @@ class DishType extends Model
 
     protected $fillable = ['name'];
 
-    public function products() : HasMany
+    public function products(): HasMany
     {
         return $this->hasMany(Dish::class);
     }

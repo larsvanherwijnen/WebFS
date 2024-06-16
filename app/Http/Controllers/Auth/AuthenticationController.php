@@ -24,7 +24,6 @@ class AuthenticationController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ]);
 
-
     }
 
     public function logout(): RedirectResponse
@@ -33,6 +32,4 @@ class AuthenticationController extends Controller
 
         return redirect()->route('home');
     }
-
-
 }

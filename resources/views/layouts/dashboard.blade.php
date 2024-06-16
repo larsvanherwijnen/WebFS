@@ -9,14 +9,20 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet"/>
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
+    @filamentStyles
     @vite('resources/css/app.css')
-
 </head>
 <body id="app" class="min-h-screen bg-blue-gray-50/50">
 @include('partials.cashier.menu')
 <main class="p-4">
     @yield('content')
 </main>
-@vite(['resources/js/app.js'])
 
+@livewireScripts
+@vite(['resources/js/app.js'])
 </body>

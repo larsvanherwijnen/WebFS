@@ -14,8 +14,9 @@ class OrderStatus extends Model
     protected $fillable = ['status'];
 
     protected $casts = [
-        'status' => OrderStatuses::class
+        'status' => OrderStatuses::class,
     ];
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);

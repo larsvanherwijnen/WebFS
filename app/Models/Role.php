@@ -11,11 +11,10 @@ class Role extends Model
 {
     use HasFactory;
 
-
     protected $fillable = ['role'];
 
     protected $casts = [
-        'role' => Roles::class
+        'role' => Roles::class,
     ];
 
     public function users(): HasMany
