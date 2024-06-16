@@ -49,7 +49,7 @@
     <tr style="height:50px;background-color:red">
         <td style="text-align:center;width:30%;color:yellow;font-size:30px">
             <img style="vertical-align: middle;" src="/images/dragon-small.png" alt="Golden Dragon" height="50px">
-            <span style="font-family:'chinese_takeawayregular'">De Gouden Draak</span>
+            <span style="font-family:'chinese_takeawayregular'">{{ __('global.title') }}</span>
             <img style="vertical-align: middle;" src="/images/dragon-small-flipped.png" alt="Golden Dragon"
                  height="50px">
         </td>
@@ -57,14 +57,14 @@
             <a href="paginas/aanbiedingen.html" style="color:yellow;font-weight:bold;text-decoration: none;">
                 <div style="width: 100%; overflow: hidden">
                     <div class="animate-marquee">
-                        Welkom bij De Gouden Draak. Klik op deze tekst om de aanbiedingen van deze week te zien!
+                        {{__('global.welcome_message')}}
                     </div>
                 </div>
             </a>
         </td>
         <td style="text-align:center;width:30%;color:yellow;font-size:30px">
             <img style="vertical-align: middle;" src="/images/dragon-small.png" alt="Golden Dragon" height="50px">
-            <span style="font-family:'chinese_takeawayregular'">De Gouden Draak</span>
+            <span style="font-family:'chinese_takeawayregular'">{{ __('global.title') }}</span>
             <img style="vertical-align: middle;" src="/images/dragon-small-flipped.png" alt="Golden Dragon"
                  height="50px">
         </td>
@@ -123,26 +123,25 @@
                             <img src="/images/dragon-small.png" style="float:left;height:200px" alt="Golden Dragon">
                             <img src="/images/dragon-small-flipped.png" style="float:right;height:200px"
                                  alt="Golden Dragon">
-                            <span style="font-size:40px;font-weight:bold;color:yellow">Chinees Indische
-                                    Specialiteiten</span><br>
-                            <span style="font-size:50px;font-weight:bold;color:yellow">De Gouden Draak</span><br>
+                            <span style="font-size:40px;font-weight:bold;color:yellow">{{__('global.specialties')}}</span><br>
+                            <span style="font-size:50px;font-weight:bold;color:yellow">{{ __('global.title') }}</span><br>
                         </p>
                         <p>
                         <table style="margin:auto;font-size:20px;color:white" border="1px solid white">
                             <tr background="/images/menu_bg_gradient.png">
                                 <td valign="middle">
                                     <a href="paginas/MENUKAART.html" style="color:white">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menukaart&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ __('global.menu') }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
                                 </td>
                                 <td valign="middle">
                                     <a href="{{route('news')}}" style="color:white">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nieuws&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{__('global.news')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
                                 </td>
                                 <td valign="middle">
                                     <a href="{{route('contact')}}" style="color:white">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{__('global.contact')}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </a>
                                 </td>
                             </tr>
@@ -157,7 +156,13 @@
                 @yield('content')
             </table>
             <br>
-            <div text-align="center"><a href="{{ route('contact-new') }}">Naar Contact</a></div>
+            <div text-align="center"><a href="{{ route('contact-new') }}">{{ __('global.to_contact') }}</a>
+                <form action="{{ route('language.change') }}" method="POST" class="bg-green-500">
+                    @csrf
+                    <button type="submit" name="locale" value="nl"
+                            class="text-yellow-500 text-xl">{{ __('global.dutch') }}</button>
+                    <button type="submit" name="locale" value="en" class="text-yellow-500 text-xl">{{ __('global.english') }}</button>
+                </form></div>
         </td>
         <td style="width:25px;"></td>
         <td style="width:25px;"></td>

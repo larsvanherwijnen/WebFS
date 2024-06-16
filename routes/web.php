@@ -43,7 +43,7 @@ Route::post('/change-language', function (Request $request) {
 
     session(['locale' => $request->input('locale')]);
 
-    return redirect()->route('home');
+    return redirect()->back();
 })->name('language.change');
 
 
