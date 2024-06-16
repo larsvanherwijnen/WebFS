@@ -8,6 +8,7 @@ use App\Models\Dish;
 use App\Models\DishType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\ErrorHandler\Debug;
 
 class DishesController extends Controller
 {
@@ -16,8 +17,8 @@ class DishesController extends Controller
      */
     public function __invoke(Request $request): string
     {
-
-
+        // Log the request to the browser console.
+        Log::info('Request received', $request->all());
         $filters = $request->get('filters', []);
         $search = $request->get('search', '');
 
@@ -32,7 +33,7 @@ class DishesController extends Controller
 
         // Search dishes by name
         if (!empty($search)) {
-            $query->whereAny(['name', 'menu_number' ], 'like', '%'.$search.'%');
+            $query->whereAny(['name', 'menu_number'], 'like', '%' . $search . '%');
         }
 
         // Get dishes

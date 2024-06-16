@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
             $table->integer('capacity');
+            $table->string('tabletId')->nullable()->unique();
             $table->timestamps();
         });
     }
