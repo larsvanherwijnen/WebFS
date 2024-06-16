@@ -105,7 +105,7 @@ class SaleController extends Controller
         // group each $request[0] by dish_id and sum the quantity
         foreach ($request[1] as $item) {
             // group each $item by dish_id and sum the quantity
-            if (! isset($groupedItems[$item['id']])) {
+            if (!isset($groupedItems[$item['id']])) {
                 $groupedItems[$item['id']] = [
                     'dish_id' => $item['id'],
                     'quantity' => 1,
@@ -128,6 +128,34 @@ class SaleController extends Controller
 
         return response()->json(['message' => 'Order created successfully'], 201);
     }
+
+    public function tableHistory(int $tableId): JsonResponse
+    {
+        $orders = Order::with('orderLines')->where('table_id', $tableId)->get();
+
+        return response()->json($orders);
+    }
+
+    public function orderHistoryOrder(Request $request, int $tableId): JsonResponse
+    {
+        $order = Order::create([
+            'table_id' => $tableId,
+            'order_type' => OrderTypes::DineIn,
+            'order_status' => OrderStatuses::Pending,
+        ]);
+
+        $orderlines = collect($request->order_lines)->map(function ($item) {
+            return [
+                'dish_id' => $item['id'],
+                'quantity' => $item['quantity'],
+            ];
+        });
+
+        $order->orderLines()->createMany($orderlines);
+
+        return response()->json(['message' => 'Order created successfully'], 201);
+    }
+
 
     /**
      * Display the specified resource.

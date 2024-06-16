@@ -83,6 +83,24 @@
                     <p class="self-center">Geen gerechten gevonden</p>
                 </div>
             </div>
+            <div>
+                <h1 class="text-xl">Geschiedenis</h1>
+                <div v-if="history.length">
+                    <div class="bg-gray-100 rounded-sm px-4 py-1">
+                        <div v-for="order in history" :key="order.id" class="flex justify-between">
+                            <p v-html="order.id"></p>
+                            <div class="space-x-2">
+                                <button @click="orderHistoryOrder(order)"
+                                        class="bg-green-500 hover:bg-green-400 px-4 rounded-md m-0.5">Herplaats</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div v-else class="flex flex-col py-4 px-2 bg-gray-100 rounded-sm w-full">
+                    <p class="self-center">Geen geschiedenis gevonden</p>
+                </div>
+            </div>
         </section>
     </div>
 </template>
@@ -99,6 +117,7 @@ export default {
             dishTypes: [],
             selectedDishes: [],
             favorites: [],
+            history: [],
         }
     },
     computed: {
@@ -124,6 +143,7 @@ export default {
     },
     created() {
         this.fetchDishes();
+        this.fetchHistory();
         this.favorites = this.fetchFavorites();
     },
     methods: {
@@ -149,6 +169,15 @@ export default {
             }
             return this.favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         },
+        fetchHistory() {
+            axios.get(`/api/sales/table/history/${this.table.id}`)
+                .then(response => {
+                    this.history = response.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         removeFromOrder(index) {
             this.selectedDishes.splice(index, 1);
         },
@@ -173,6 +202,15 @@ export default {
                     console.log(error);
                 });
         },
+        orderHistoryOrder(order) {
+            axios.post(`api/sales/table/history/order/${this.table.id}`, {order})
+                .then(response => {
+                    this.fetchHistory();
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        }
     },
 }
 </script>
