@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('order_type');
             $table->string('order_status');
             $table->timestamps();
-            
+
             $table->foreign('order_type')->references('type')->on('order_types');
             $table->foreign('order_status')->references('status')->on('order_statuses');
         });

@@ -28,14 +28,13 @@ class Order extends Model
         return $this->belongsTo(Table::class);
     }
 
-   public function orderType(): BelongsTo
-   {
+    public function orderType(): BelongsTo
+    {
         return $this->belongsTo(OrderType::class);
-   }
+    }
 
-   public function orderStatus(): BelongsTo
-   {
+    public function orderStatus(): BelongsTo
+    {
         return $this->belongsTo(OrderStatus::class);
-   }
-
+    }
 }

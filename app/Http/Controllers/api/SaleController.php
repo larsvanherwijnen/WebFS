@@ -12,7 +12,6 @@ use App\Http\Resources\SaleReportResource;
 use App\Models\Dish;
 use App\Models\Order;
 use App\Models\OrderLine;
-use App\Models\SaleReport;
 use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -21,7 +20,6 @@ use Illuminate\Support\Number;
 
 class SaleController extends Controller
 {
-
     public function index(Request $request): JsonResponse
     {
         $startDate = $request->query('start_date');
@@ -51,7 +49,7 @@ class SaleController extends Controller
             'total' => Number::currency($total, 'EUR', 'nl'),
             'tax' => Number::currency($tax, 'EUR', 'nl'),
             'net' => Number::currency($total - $tax, 'EUR', 'nl'),
-            'sales' => $sales
+            'sales' => $sales,
         ]);
 
         return response()->json($data);
@@ -73,8 +71,6 @@ class SaleController extends Controller
         return json_encode($exports);
     }
 
-
-
     /**
      * Store a newly created resource in storage.
      */
@@ -82,19 +78,18 @@ class SaleController extends Controller
     {
         $order = Order::create([
             'order_type' => OrderTypes::TakeOut,
-            'order_status' => OrderStatuses::Pending
+            'order_status' => OrderStatuses::Pending,
         ]);
 
         $orderlines = collect($request->items)->map(function ($item) {
             return [
                 'dish_id' => $item['id'],
                 'quantity' => $item['quantity'],
-                'note' => $item['note']
+                'note' => $item['note'],
             ];
         });
 
         $order->orderLines()->createMany($orderlines);
-
 
         return response()->json(['message' => 'Order created successfully'], 201);
     }

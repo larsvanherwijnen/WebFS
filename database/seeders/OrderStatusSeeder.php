@@ -15,7 +15,7 @@ class OrderStatusSeeder extends Seeder
     {
         foreach (OrderStatuses::values() as $status) {
             OrderStatus::create([
-                'status' => $status
+                'status' => $status,
             ]);
         }
     }
