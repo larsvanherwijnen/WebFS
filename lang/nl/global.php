@@ -1,4 +1,5 @@
 <?php
+
 return [
     'title' => 'De Gouden Draak',
     'restaurant_name' => 'De Gouden Draak',
@@ -23,5 +24,5 @@ return [
     'to_contact' => 'Naar Contact',
     'select_language' => 'Selecteer Taal',
     'english' => 'Engels',
-    'dutch' => 'Nederlands'
+    'dutch' => 'Nederlands',
 ];

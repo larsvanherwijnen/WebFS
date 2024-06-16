@@ -1,4 +1,5 @@
 <?php
+
 return [
     'title' => 'The Golden Dragon',
     'restaurant_name' => 'The Golden Dragon',
@@ -23,5 +24,5 @@ return [
     'to_contact' => 'To Contact',
     'select_language' => 'Select Language',
     'english' => 'English',
-    'dutch' => 'Dutch'
+    'dutch' => 'Dutch',
 ];

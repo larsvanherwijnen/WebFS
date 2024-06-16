@@ -13,17 +13,14 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Validation\Rules\Unique;
 use Livewire\Component;
-use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class UpdateDish extends Component implements HasForms
 {
     use InteractsWithForms;
 
     public ?array $data = [];
+
     public Dish $dish;
 
     public function mount(Dish $dish): void
@@ -68,8 +65,8 @@ class UpdateDish extends Component implements HasForms
                                 TextInput::make('menu_number_addition')
                                     ->required(),
                             ])->columnSpanFull(),
-                        ])->addActionLabel('Add Variant')
-                ])
+                        ])->addActionLabel('Add Variant'),
+                ]),
             ])->statePath('data');
     }
 
@@ -93,7 +90,6 @@ class UpdateDish extends Component implements HasForms
                 $this->dish->variants()->create($variant);
             }
         });
-
 
         // Optionally, you might want to delete variants that were removed
         $existingVariantIds = $this->dish->variants()->pluck('id')->toArray();

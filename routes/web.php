@@ -5,8 +5,6 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TabletController;
 use App\Http\Middleware\TabletIdentification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -37,10 +35,8 @@ Route::view('/news', 'pages.news')->name('news');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
-
-
 Route::post('/change-language', function (Request $request) {
-    if (!in_array($request->input('locale'), ['en', 'nl'])) {
+    if (! in_array($request->input('locale'), ['en', 'nl'])) {
         abort(400);
     }
 
@@ -48,8 +44,3 @@ Route::post('/change-language', function (Request $request) {
 
     return redirect()->back();
 })->name('language.change');
-
-
-
-
-

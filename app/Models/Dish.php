@@ -55,5 +55,4 @@ class Dish extends Model
         return $this->hasMany(Dish::class, 'menu_number', 'menu_number')
             ->whereNotNull('menu_number_addition');
     }
-
 }

@@ -7,8 +7,6 @@ use App\Enums\OrderTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\StoreTabletOrderRequest;
-use App\Http\Resources\DishResource;
-use App\Http\Resources\SaleReportResource;
 use App\Models\Dish;
 use App\Models\Order;
 use App\Models\OrderLine;
@@ -107,11 +105,11 @@ class SaleController extends Controller
         // group each $request[0] by dish_id and sum the quantity
         foreach ($request[1] as $item) {
             // group each $item by dish_id and sum the quantity
-            if (!isset($groupedItems[$item['id']])) {
+            if (! isset($groupedItems[$item['id']])) {
                 $groupedItems[$item['id']] = [
                     'dish_id' => $item['id'],
                     'quantity' => 1,
-                    'note' => $item['note'] ?? ''
+                    'note' => $item['note'] ?? '',
                 ];
             } else {
                 $groupedItems[$item['id']]['quantity'] += 1;
@@ -122,7 +120,7 @@ class SaleController extends Controller
             return [
                 'dish_id' => $item['dish_id'],
                 'quantity' => $item['quantity'],
-                'note' => $item['note']
+                'note' => $item['note'],
             ];
         });
 

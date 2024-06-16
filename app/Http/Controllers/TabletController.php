@@ -14,13 +14,15 @@ class TabletController extends Controller
         $tabletId = session()->get('tablet');
         $table = Table::where('tabletId', $tabletId)->first();
 
-        if (!$tabletId or !$table) {
+        if (! $tabletId or ! $table) {
             dd($tabletId, $table);
+
             return view('tablet.identify')->with('error', 'Tafel niet gevonden. Probeer opnieuw.');
         }
         if ($table) {
             $dishes = Dish::all();
             $dishTypes = DishType::all();
+
             return view('tablet.index', compact('table', 'dishes', 'dishTypes'));
         }
     }
@@ -33,6 +35,7 @@ class TabletController extends Controller
     public function unIdentify()
     {
         session()->forget('tablet');
+
         return redirect()->route('tablet.identify');
     }
 
