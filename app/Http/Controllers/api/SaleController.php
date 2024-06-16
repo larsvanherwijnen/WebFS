@@ -6,6 +6,8 @@ use App\Enums\OrderStatuses;
 use App\Enums\OrderTypes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\StoreTabletOrderRequest;
+use App\Models\Dish;
 use App\Models\Order;
 use App\Models\OrderLine;
 use Carbon\Carbon;
@@ -80,6 +82,43 @@ class SaleController extends Controller
         $orderlines = collect($request->items)->map(function ($item) {
             return [
                 'dish_id' => $item['id'],
+                'quantity' => $item['quantity'],
+                'note' => $item['note'],
+            ];
+        });
+
+        $order->orderLines()->createMany($orderlines);
+
+        return response()->json(['message' => 'Order created successfully'], 201);
+    }
+
+    public function storeTablet(StoreTabletOrderRequest $request): JsonResponse
+    {
+        $order = Order::create([
+            'order_type' => OrderTypes::DineIn,
+            'order_status' => OrderStatuses::Pending,
+            'table_id' => $request[0]['id'] ?? null,
+        ]);
+
+        $groupedItems = [];
+
+        // group each $request[0] by dish_id and sum the quantity
+        foreach ($request[1] as $item) {
+            // group each $item by dish_id and sum the quantity
+            if (! isset($groupedItems[$item['id']])) {
+                $groupedItems[$item['id']] = [
+                    'dish_id' => $item['id'],
+                    'quantity' => 1,
+                    'note' => $item['note'] ?? '',
+                ];
+            } else {
+                $groupedItems[$item['id']]['quantity'] += 1;
+            }
+        }
+
+        $orderlines = collect($groupedItems)->map(function ($item) {
+            return [
+                'dish_id' => $item['dish_id'],
                 'quantity' => $item['quantity'],
                 'note' => $item['note'],
             ];

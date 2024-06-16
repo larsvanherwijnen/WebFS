@@ -14,9 +14,8 @@ use Livewire\Component;
 
 class ListDishes extends Component implements HasForms, HasTable
 {
-
-    use InteractsWithTable;
     use InteractsWithForms;
+    use InteractsWithTable;
 
     public function table(Table $table): Table
     {
@@ -32,7 +31,7 @@ class ListDishes extends Component implements HasForms, HasTable
             ])
             ->actions([
                 Action::make('edit')
-                    ->url(fn(Dish $record): string => route('admin.dishes.edit', $record))
+                    ->url(fn (Dish $record): string => route('admin.dishes.edit', $record)),
             ])
             ->bulkActions([
                 // ...

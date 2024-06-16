@@ -66,8 +66,8 @@ class CreateDish extends Component implements HasForms
                                     })
                                     ->required(),
                             ])->columnSpanFull(),
-                        ])->addActionLabel('Add Variant')
-                ])
+                        ])->addActionLabel('Add Variant'),
+                ]),
             ])->statePath('data');
     }
 
@@ -79,12 +79,12 @@ class CreateDish extends Component implements HasForms
 
         $variants = collect($data['variants']);
 
-        $variants = $variants->map(function ($variant) use ($data, $dish) {
+        $variants = $variants->map(function ($variant) use ($data) {
             $variant['menu_number'] = $data['menu_number'];
             $variant['dish_type_id'] = $data['dish_type_id'];
+
             return $variant;
         });
-
 
         $dish->variants()->createMany($variants);
     }
