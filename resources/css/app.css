@@ -1,3 +1,59 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+td {
+    padding: 0px;
+}
+
+@font-face {
+    font-family: 'chinese_takeawayregular';
+    src: url('fonts/chinesetakeaway-webfont.woff2') format('woff2'),
+    url('fonts/chinesetakeaway-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+.marquee-container {
+    overflow: hidden;
+}
+
+.marquee-container a {
+    color: yellow;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+.animate-marquee {
+    animation: marquee 10s linear infinite;
+}
+
+
+.table-row {
+    height: 50px;
+    background-color: red;
+}
+
+.table-cell {
+    text-align: center;
+    width: 30%;
+    color: yellow;
+    font-size: 30px;
+}

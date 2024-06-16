@@ -6,19 +6,19 @@
         <ul class="px-4 space-x-4 flex flex-wrap text-md font-medium text-gray-500">
             <li class="me-2 flex">
                 <a href="{{ route('admin.checkout') }}" aria-current="page"
-                   class="{{ request()->routeIs('admin.checkout') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Dashboard</a>
+                   class="{{ request()->routeIs('admin.checkout') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">{{ __('backend.dashboard') }}</a>
             </li>
             <li class="me-2 flex">
                 <a href="{{ route('admin.sales') }}"
-                   class="{{ request()->routeIs('admin.sales') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Verkoop overzicht</a>
+                   class="{{ request()->routeIs('admin.sales') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">{{ __('backend.sales') }}</a>
             </li>
             <li class="me-2 flex">
                 <a href="{{ route('admin.dishes') }}"
-                   class="{{ request()->routeIs('admin.dishes') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Gerechten</a>
+                   class="{{ request()->routeIs('admin.dishes') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">{{ __('backend.dashboard') }}</a>
             </li>
             <li class="me-2 flex">
                 <a href="{{ route('logout') }}"
-                   class="{{ request()->routeIs('logout') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">Uitloggen</a>
+                   class="{{ request()->routeIs('logout') ? 'border-b-2 border-black text-black font-bold' : 'pb-2' }}">{{ __('backend.dashboard') }}</a>
             </li>
         </ul>
     </div>
