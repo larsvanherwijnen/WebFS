@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticationController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TabletController;
 use App\Http\Middleware\TabletIdentification;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
+Route::get('/menu', [MenuController::class, 'download'])->name('menu.download');
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::view('/', 'pages.checkout')->name('checkout');
