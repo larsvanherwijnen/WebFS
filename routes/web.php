@@ -12,6 +12,9 @@ Route::get('/menu', [MenuController::class, 'download'])->name('menu.download');
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     Route::view('/', 'pages.checkout')->name('checkout');
     Route::view('/sales', 'pages.sales')->name('sales');
+    Route::get('/dishes', \App\Livewire\ListDishes::class)->name('dishes');
+    Route::get('/dishes/create', \App\Livewire\CreateDish::class)->name('dishes.create');
+    Route::get('/dishes/edit/{dish}', \App\Livewire\UpdateDish::class)->name('dishes.edit');
 });
 
 Route::group([
@@ -27,6 +30,3 @@ Route::post('/identify', [TabletController::class, 'identifyStore'])->name('tabl
 Route::view('/login', 'pages.auth.login')->name('login');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::get('/logout', [AuthenticationController::class, 'logout'])->name('logout');
-
-
-

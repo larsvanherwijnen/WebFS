@@ -12,16 +12,14 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class SalesReportExport implements FromCollection, WithHeadings, WithMapping, WithColumnFormatting
+class SalesReportExport implements FromCollection, WithColumnFormatting, WithHeadings, WithMapping
 {
-
     public function forDate(Carbon $date): static
     {
         $this->date = $date;
 
         return $this;
     }
-
 
     public function collection(): Collection
     {

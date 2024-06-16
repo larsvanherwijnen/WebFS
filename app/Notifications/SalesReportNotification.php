@@ -2,12 +2,9 @@
 
 namespace App\Notifications;
 
-use App\Exports\SalesReportExport;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Maatwebsite\Excel\Facades\Excel;
 
 class SalesReportNotification extends Notification
 {
@@ -36,7 +33,6 @@ class SalesReportNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-
 
         return (new MailMessage)
             ->subject('Daily Sales Report')
