@@ -224,6 +224,10 @@
         .h50 {
             height: 50px;
         }
+
+        .global-title {
+            font-family: 'chinese_takeawayregular';
+        }
     </style>
     @vite('recources/css/app.css')
 </head>
@@ -233,7 +237,7 @@
         <tr class="table-row">
             <td class="cell">
                 <img src="/images/dragon-small.png" alt="Golden Dragon" class="small-img">
-                <span>{{__('global.title')}}</span>
+                <span class="global-title">{{__('global.title')}}</span>
                 <img src="/images/dragon-small.png" alt="Golden Dragon" class="small-img">
             </td>
             <td class="marquee-container">
@@ -243,7 +247,7 @@
             </td>
             <td class="cell">
                 <img src="{{ asset('images/dragon-small.png') }}" alt="Golden Dragon" class="small-img">
-                <span>{{__('global.title')}}</span>
+                <span class="global-title">{{__('global.title')}}</span>
                 <img src="{{ asset('images/dragon-small-flipped.png') }}" alt="Golden Dragon" class="small-img">
             </td>
         </tr>
